@@ -9,6 +9,20 @@ trait IsCreated
      */
     protected $createdDate;
 
+    /**
+     * @ORM\PrePersist
+     * @return Uuid
+     * @throws \Exception
+     */
+    public function generateCreated(): \DateTimeInterface
+    {
+        if ($this->createdDate === null) {
+            $this->createdDate = new \DateTime();
+        }
+
+        return $this->createdDate;
+    }
+
     public function getCreatedDate(): ?\DateTimeInterface
     {
         return $this->createdDate;
