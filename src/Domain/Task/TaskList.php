@@ -20,10 +20,10 @@ class TaskList
         usort($this->tasks, function (Task $a, Task $b): bool {
             $aScore = $bScore = 0;
 
-            if($a->isFlagged()) {
+            if ($a->isFlagged()) {
                 $bScore += 8;
             }
-            if($b->isFlagged()) {
+            if ($b->isFlagged()) {
                 $aScore += 8;
             }
 

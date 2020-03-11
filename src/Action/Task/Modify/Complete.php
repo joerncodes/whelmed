@@ -17,7 +17,8 @@ class Complete extends Base
     public function __invoke(Request $request, string $uuid)
     {
         $task = $this->getTaskOrFail($uuid);
-        $task->setCompletedDate(new \DateTime());
+        $task->setCompletedDate(new \DateTime())
+            ->setFlagged(false);
 
         $this->repository->saveAndFlush($task);
 

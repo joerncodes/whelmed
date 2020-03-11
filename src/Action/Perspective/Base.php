@@ -30,5 +30,4 @@ abstract class Base
 
         return new Response($content);
     }
-
 }

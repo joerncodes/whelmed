@@ -2,4 +2,6 @@
 
 namespace App\Domain\Query;
 
-interface QueryInterface {}
+interface QueryInterface
+{
+}

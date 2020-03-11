@@ -25,7 +25,9 @@
             </a>
         </div>
         <div class="task-actions col-1">
-            {% include 'atom/task/task-action-flag.html.twig' with { task : task } only %}
+            {% if not task.isCompleted %}
+                {% include 'atom/task/task-action-flag.html.twig' with { task : task } only %}
+            {% endif %}
         </div>
 
     </div>
