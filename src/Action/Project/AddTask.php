@@ -21,9 +21,12 @@ class AddTask
     /**
      * @Route("/project/add/task", name="project.add-task", methods={"POST"})
      */
-    public function __invoke(TaskRepository $taskRepository, ProjectRepository $projectRepository,
-         Request $request, UrlGeneratorInterface $router)
-    {
+    public function __invoke(
+        TaskRepository $taskRepository,
+        ProjectRepository $projectRepository,
+        Request $request,
+        UrlGeneratorInterface $router
+    ) {
         $uuid = Uuid::fromString($request->request->get(self::FORM_INPUT_PROJECT_UUID));
         $project = $projectRepository->findOneByUuidOrFail($uuid);
 

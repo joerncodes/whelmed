@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h1>{{ title }}</h1>
+            {% if description is defined %}
+                <p class="lead">{{ description }}</p>
+            {% endif %}
+
+            {% include 'molecule/task-list.html.twig' with { taskList : taskList } only %}
+        </div>
+    </div>
+{% endblock %}

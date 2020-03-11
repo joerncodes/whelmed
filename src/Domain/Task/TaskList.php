@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain;
+namespace App\Domain\Task;
 
 use App\Entity\Task;
 use Webmozart\Assert\Assert;

@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Domain\TaskList;
+use App\Domain\Task\TaskList;
 use App\Entity\Task;
 use App\Repository\Traits\HasUuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

@@ -27,7 +27,8 @@ li.task-list-entry {
     font-weight: bold;
 
     &.completed {
-      color: $text-muted;
+      color: $super-light;
+
       text-decoration: line-through;
 
       time {

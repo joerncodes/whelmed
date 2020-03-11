@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Domain\TaskList;
+use App\Domain\Task\TaskList;
 use App\Entity\Traits\HasUuid;
 use App\Entity\Traits\IsCreated;
 use Doctrine\Common\Collections\ArrayCollection;

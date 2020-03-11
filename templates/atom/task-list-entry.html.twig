@@ -18,7 +18,8 @@
         <a href="{{ path('task.view', { uuid : task.uuid }) }}" class="{% if task.isCompleted %}completed{% endif %}">
             {{ task.title }}
             {% if task.completed %}
-                <time>({{ task.completedDate | whelmeddate }})</time>
+                <br>
+                <time>completed {{ task.completedDate | whelmeddate }}</time>
             {% endif %}
         </a>
     </div>
