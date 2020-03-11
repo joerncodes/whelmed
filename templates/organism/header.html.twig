@@ -1,11 +1,17 @@
 <div class="row">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ path('task.all') }}">Whelmed</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand mr-5" href="{{ path('task.all') }}">Whelmed</a>
+            <a href="" class="navbar-item icon">
+                <i class="mdi mdi-plus-box-multiple"></i>
+            </a>
+            <a href="" class="navbar-item icon">
+                <i class="mdi mdi-plus-circle"></i>
+            </a>
             {% include 'molecule/task-quick-add-form.html.twig' %}
+            <a href="" class="navbar-item">
+                <img src="https://pbs.twimg.com/profile_images/923493093692895233/6KK8YOhR_400x400.jpg" alt="" class="avatar">
+            </a>
         </nav>
     </header>
 </div>

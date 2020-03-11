@@ -1,6 +1,24 @@
 .project-list.button-nav {
   background-color: $less-dark;
 }
+
+.avatar {
+  width: 3rem;
+  margin-left: $spacer;
+  border-radius: 10rem;
+}
+
+header .icon {
+  font-size: $font-size-lg;
+  margin-right: $spacer;
+
+  color: $primary-muted;
+
+  &:hover {
+    color: $highlight;
+  }
+}
+
 .button-nav {
   padding: 0;
   background-color: $dark;
