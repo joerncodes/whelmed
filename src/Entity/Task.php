@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Task
+class Task extends Base
 {
     use HasUuid, IsCreated, IsCompleted;
 

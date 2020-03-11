@@ -15,8 +15,8 @@ class ProjectProvider extends BaseProvider
         'Form a band',
     ];
 
-    public function project()
+    public function project(): string
     {
-        return self::randomElement(self::PROJECTS);
+        return self::unique()->randomElement(self::PROJECTS);
     }
 }

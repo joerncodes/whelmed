@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
-class Project
+class Project extends Base
 {
     use HasUuid, IsCreated;
 
@@ -62,7 +62,7 @@ class Project
     }
 
     /**
-     * @return Collection|Task[]
+     * @return Collection
      */
     public function getTasks(): Collection
     {

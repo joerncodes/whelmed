@@ -2,12 +2,13 @@
 
 namespace App\Repository\Traits;
 
+use App\Entity\Base;
 use Doctrine\ORM\NoResultException;
-use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 trait HasUuid
 {
-    public function findOneByUuidOrFail(Uuid $uuid)
+    public function findOneByUuidOrFail(UuidInterface $uuid): Base
     {
         $result = $this->createQueryBuilder('t')
             ->andWhere('t.uuid = :uuid')

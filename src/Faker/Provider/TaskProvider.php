@@ -29,8 +29,8 @@ class TaskProvider extends BaseProvider
         'Solve the riddle (what DOES it have in its pocket?)',
     ];
 
-    public function task()
+    public function task(): string
     {
-        return self::randomElement(self::TASKS);
+        return self::unique()->randomElement(self::TASKS);
     }
 }

@@ -14,7 +14,7 @@ class All extends Base
     public function __invoke()
     {
         $response = '';
-        $tasks = $this->repository->findAll()->getTasks();
+        $tasks = $this->repository->findAllTasks()->getTasks();
 
         $content = $this->twig->render('page/task/tasks-all.html.twig', compact('tasks'));
 

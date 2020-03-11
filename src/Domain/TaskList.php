@@ -17,9 +17,7 @@ class TaskList
         Assert::allIsInstanceOf($tasks, Task::class);
         $this->tasks = $tasks;
 
-        usort($this->tasks, function ($a, $b) {
-            /** @var Task $a */
-            /** @var Task $b */
+        usort($this->tasks, function (Task $a, Task $b): bool {
             $aScore = $bScore = 0;
 
             if ($a->isCompleted() && !$b->isCompleted()) {
