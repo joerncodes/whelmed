@@ -19,7 +19,7 @@ class PurgeConfirmed
     {
         $taskList = $query->getTaskList();
 
-        foreach($taskList->getTasks() as $task) {
+        foreach ($taskList->getTasks() as $task) {
             $repository->remove($task);
         }
         $repository->flush();

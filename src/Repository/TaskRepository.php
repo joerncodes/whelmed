@@ -25,11 +25,13 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
-    public function flush():void {
+    public function flush():void
+    {
         $this->getEntityManager()->flush();
     }
 
-    public function remove(Task $task): void {
+    public function remove(Task $task): void
+    {
         $this->getEntityManager()->remove($task);
     }
 

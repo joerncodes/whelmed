@@ -53,8 +53,8 @@ class TaskList
     public function getIncomplete(): array
     {
         $incomplete = [];
-        foreach($this->tasks as $task) {
-            if(!$task->isCompleted()) {
+        foreach ($this->tasks as $task) {
+            if (!$task->isCompleted()) {
                 $incomplete[]  = $task;
             }
         }
@@ -64,8 +64,8 @@ class TaskList
     public function getCompleted(): array
     {
         $completed = [];
-        foreach($this->tasks as $task) {
-            if($task->isCompleted()) {
+        foreach ($this->tasks as $task) {
+            if ($task->isCompleted()) {
                 $completed[]  = $task;
             }
         }

@@ -23,6 +23,14 @@ li.task-list-entry {
     padding-top: $spacer * .6;
   }
 
+  .project-link {
+    color: $less-dark;
+  }
+
+  .tag {
+    color: $less-dark;
+  }
+
   //padding: $spacer * .5 0;
   border-bottom: 1px solid $border-color;
 
