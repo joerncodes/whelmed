@@ -1,0 +1,7 @@
+<div class="col-2 h-100 project-list button-nav">
+    <div class="btn-group-vertical">
+        {% for project in projectList %}
+            {% include 'atom/project-link.html.twig' with { project : project, class : 'btn' } %}
+        {% endfor %}
+    </div>
+</div>

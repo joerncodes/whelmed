@@ -27,6 +27,12 @@ abstract class Base
         $this->twig = $twig;
     }
 
+    protected function getViewParameters(): array
+    {
+        $projectList = $this->repository->getProjectList();
+        return compact('projectList');
+    }
+
     protected function getProjectOrFail(string $uuid): Project
     {
         try {

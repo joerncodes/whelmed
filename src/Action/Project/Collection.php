@@ -6,18 +6,16 @@ use App\Repository\ProjectRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class View extends Base
+class Collection extends Base
 {
     /**
-     * @Route("/project/{uuid}", name="project.view")
+     * @Route("/projects", name="project.collection")
      */
-    public function __invoke(string $uuid): Response
+    public function __invoke(): Response
     {
-        $project = $this->getProjectOrFail($uuid);
-
         $content = $this->twig->render(
-            'page/project/project-view.html.twig',
-            $this->getViewParameters() + compact('project')
+            'page/project/project-collection.html.twig',
+            $this->getViewParameters()
         );
 
         return new Response($content);

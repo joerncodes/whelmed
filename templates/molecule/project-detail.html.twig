@@ -1,19 +1,23 @@
-<h4>{{ project.title }}</h4>
 
-<table class="table">
-    <tr>
-        <th>UUID</th>
-        <td>{{ project.uuid }}</td>
-    </tr>
-    <tr>
-        <th>Tasks</th>
-        <td>
-            <ul class="list-unstyled">
-                {% for task in project.taskList.tasks %}
-                    {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : false } only %}
-                {% endfor %}
-            </ul>
-        </td>
-    </tr>
-</table>
-
+<div class="row">
+    <div class="col">
+        <h1>{{ project.title }}</h1>
+        <ul class="list-unstyled">
+            {% for task in project.taskList.tasks %}
+                {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : false } only %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-4">
+        <table class="table table-borderless">
+            <tr>
+                <th>UUID</th>
+                <td>{{ project.uuid }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ project.createdDate | whelmeddate }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

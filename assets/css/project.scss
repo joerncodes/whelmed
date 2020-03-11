@@ -1,7 +1,13 @@
-.project-link {
+main .project-link {
   background-color: $success;
   color: $light;
   display: inline-block;
   padding: $spacer * .3;
   border-radius: $border-radius * 2;
+}
+
+.project-list {
+  background-color: $less-dark;
+
+
 }

@@ -1,0 +1,8 @@
+main {
+    padding: $spacer * 2;
+
+    h1 {
+        color: $primary;
+        margin-bottom: $paragraph-margin-bottom * 2;
+    }
+}

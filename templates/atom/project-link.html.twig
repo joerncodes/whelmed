@@ -1,3 +1,3 @@
-<a href="{{ path('project.view', { uuid : project.uuid }) }}" class="project-link">
+<a href="{{ path('project.view', { uuid : project.uuid }) }}" class="project-link {% if class is defined %}{{ class }}{% endif %}">
     {{ project.title }}
 </a>

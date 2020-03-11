@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block metanav %}
+    {% include 'molecule/project-metanav.html.twig' with { projectList : projectList } only %}
+{% endblock %}
