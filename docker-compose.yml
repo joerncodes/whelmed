@@ -17,10 +17,10 @@ services:
       volumes:
         - .:/application
       environment:
-        - MYSQL_ROOT_PASSWORD=orootpw
+        - MYSQL_ROOT_PASSWORD=wrootpw
         - MYSQL_DATABASE=whelmed
-        - MYSQL_USER=ouser
-        - MYSQL_PASSWORD=opassword
+        - MYSQL_USER=wuser
+        - MYSQL_PASSWORD=wpassword
       ports:
         - "7009:3306"
 
