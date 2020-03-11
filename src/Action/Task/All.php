@@ -7,19 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class All
+class All extends Base
 {
     /**
      * @Route("/", name="task.all")
-     * @param TaskRepository $repository
      * @return Response
      */
-    public function __invoke(TaskRepository $repository, Environment $twig)
+    public function __invoke()
     {
         $response = '';
-        $tasks = $repository->findAll();
+        $tasks = $this->repository->findAll()->getTasks();
 
-        $content = $twig->render('page/task/tasks-all.html.twig', compact('tasks'));
+        $content = $this->twig->render('page/task/tasks-all.html.twig', compact('tasks'));
 
         return new Response($content);
     }

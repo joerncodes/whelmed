@@ -1,0 +1,19 @@
+ul.task-list {
+  li a {
+    font-weight: bold;
+
+    &.completed {
+     color: $text-muted;
+
+      time {
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}
+
+ul.task-action-bar {
+  i {
+    font-size: $font-size-lg;
+  }
+}

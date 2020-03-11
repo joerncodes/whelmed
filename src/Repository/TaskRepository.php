@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Domain\TaskList;
 use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -19,6 +20,22 @@ class TaskRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Task::class);
+    }
+
+    public function save(Task $task)
+    {
+        $this->getEntityManager()->persist(($task));
+    }
+
+    public function saveAndFlush(Task $task)
+    {
+        $this->save($task);
+        $this->getEntityManager()->flush();
+    }
+
+    public function findAll()
+    {
+        return new TaskList(parent::findAll());
     }
 
     public function findOneByUuidOrFail(Uuid $uuid)

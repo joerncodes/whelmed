@@ -1,0 +1,24 @@
+<h4>{{ task.title }}</h4>
+{% include 'molecule/task-action-bar.html.twig' with { task : task } only %}
+
+<table class="table">
+    <tr>
+        <th>UUID</th>
+        <td>{{ task.uuid }}</td>
+    </tr>
+    <tr>
+        <th>Created</th>
+        <td>{{ task.createdDate | whelmeddate }}</td>
+    </tr>
+    <tr>
+        <th>Completed</th>
+        <td>
+            {% if(task.isCompleted) %}
+                Completed on {{ task.completedDate | whelmeddate }}
+            {% else %}
+                Not yet completed
+            {% endif %}
+        </td>
+    </tr>
+</table>
+

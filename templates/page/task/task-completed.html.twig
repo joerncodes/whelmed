@@ -3,7 +3,7 @@
 {% block body %}
     <div class="row">
         <div class="col">
-            {% include 'molecule/task-detail.html.twig' with { task : task } only %}
+            Task {{ task.title }} was successfully completed.
         </div>
     </div>
 {% endblock %}
