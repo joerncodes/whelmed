@@ -2,6 +2,7 @@
 
 namespace App\Faker\Provider;
 
+use Faker\Generator;
 use Faker\Provider\Base as BaseProvider;
 
 class ProjectProvider extends BaseProvider

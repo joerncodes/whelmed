@@ -25,7 +25,7 @@ class Completed implements QueryInterface
             ->select('t')
             ->from(Task::class, 't')
             ->where(
-                $this->queryBuilder->expr()->isNotNull('t.completedDate', true)
+                $this->queryBuilder->expr()->isNotNull('t.completedDate')
             )
             ->orderBy('t.title', 'ASC')
             ->getQuery()

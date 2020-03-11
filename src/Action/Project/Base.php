@@ -33,7 +33,7 @@ abstract class Base
         return compact('projectList');
     }
 
-    protected function getProjectOrFail(string $uuid): Project
+    protected function getProjectOrFail(string $uuid): \App\Entity\Base
     {
         try {
             return $this->repository->findOneByUuidOrFail(Uuid::fromString($uuid));
