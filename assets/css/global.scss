@@ -1,3 +1,11 @@
+@import "variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~@mdi/font/css/materialdesignicons";
 @import "task";
+@import "project";
+@import "nav";
+
+
+body, html {
+  height: 100%;
+}

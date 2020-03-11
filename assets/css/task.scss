@@ -1,18 +1,45 @@
-li.task-list-entry a {
-  font-weight: bold;
+li.task-list-entry {
+  .task-completion {
+    display: inline-block;
+    position: relative;
+    top: $spacer * .3;
+    margin-right: $spacer * .5;
 
-  &.completed {
-    color: $text-muted;
-    text-decoration: line-through;
+    a {
+      color: $text-muted;
+      font-size: $font-size-lg * 1.5;
 
-    time {
-      font-size: $font-size-sm;
+      text-decoration: none;
+
+      &:hover {
+        color: $highlight;
+      }
     }
   }
-}
+  .task-label {
+    display: inline-block;
+  }
 
-ul.task-action-bar {
-  i {
-    font-size: $font-size-lg;
+  padding: $spacer * .5 0;
+  border-bottom: 1px solid $border-color;
+
+  a {
+    font-weight: bold;
+
+    &.completed {
+      color: $text-muted;
+      text-decoration: line-through;
+
+      time {
+        font-size: $font-size-sm;
+      }
+    }
+
+  }
+
+  ul.task-action-bar {
+    i {
+      font-size: $font-size-lg;
+    }
   }
 }

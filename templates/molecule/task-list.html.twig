@@ -1,4 +1,4 @@
-<ul class="task-list">
+<ul class="task-list list-unstyled">
     {% for task in tasks %}
         {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : true } only %}
     {% endfor %}

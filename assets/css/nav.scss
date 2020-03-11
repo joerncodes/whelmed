@@ -1,0 +1,25 @@
+.button-nav {
+  padding: 0;
+  background-color: $dark;
+
+  .btn-group-vertical {
+    padding-top: $spacer * .25;
+    width: 100%;
+
+    .btn {
+      border-radius: 0;
+      color: $light;
+      text-align: left;
+
+      &:hover {
+        color: $dark;
+        background-color: $light;
+      }
+    }
+  }
+}
+
+header {
+  border-bottom: 1px solid $dark;
+  width: 100%;
+}

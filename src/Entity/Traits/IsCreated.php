@@ -11,7 +11,6 @@ trait IsCreated
 
     /**
      * @ORM\PrePersist
-     * @return Uuid
      * @throws \Exception
      */
     public function generateCreated(): \DateTimeInterface

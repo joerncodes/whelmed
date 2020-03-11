@@ -8,18 +8,31 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="container">
-            <header>
-                <div class="row">
-                    <div class="col">
-                        <h1>Whelmed</h1>
+        <div class="container-fluid h-100">
+            <div class="row">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="{{ path('task.all') }}">Whelmed</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        {% include 'molecule/task-quick-add-form.html.twig' %}
+                    </nav>
+                </header>
+            </div>
+            <div class="row h-100">
+                <div class="col-1 button-nav">
+                    <div class="btn-group-vertical">
+                        <a href="" class="btn "><i class="mdi mdi-inbox"></i> Inbox</a>
+                        <a href="" class="btn "><i class="mdi mdi-package-variant"></i> Project</a>
+                        <a href="" class="btn "><i class="mdi mdi-flag-variant"></i> Flagged</a>
                     </div>
                 </div>
-            </header>
+                <div class="col">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
 
-            {% include 'molecule/task-quick-add-form.html.twig' %}
-
-            {% block body %}{% endblock %}
             {% block javascripts %}{% endblock %}
         </div>
     </body>
