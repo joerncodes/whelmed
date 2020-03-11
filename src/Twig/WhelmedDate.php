@@ -14,7 +14,8 @@ class WhelmedDate extends AbstractExtension
         ];
     }
 
-    public function formatDate(\DateTimeInterface $dateTime) {
+    public function formatDate(\DateTimeInterface $dateTime)
+    {
         return $dateTime->format('Y-m-d');
     }
 }

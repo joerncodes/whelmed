@@ -27,7 +27,7 @@ trait HasUuid
      */
     public function generateUuid(): Uuid
     {
-        if($this->uuid === null) {
+        if ($this->uuid === null) {
             $this->uuid = Uuid::uuid4();
         }
 

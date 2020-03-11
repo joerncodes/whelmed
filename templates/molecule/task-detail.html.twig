@@ -7,6 +7,16 @@
         <td>{{ task.uuid }}</td>
     </tr>
     <tr>
+        <th>Project</th>
+        <td>
+            {% if task.project is not null %}
+                {% include 'atom/project-link.html.twig' with { project : task.project } only %}
+            {% else %}
+                [No project]
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
         <th>Created</th>
         <td>{{ task.createdDate | whelmeddate }}</td>
     </tr>

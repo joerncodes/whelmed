@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Action\Task;
+namespace App\Action\Project;
 
-use App\Entity\Task;
-use App\Repository\TaskRepository;
+use App\Entity\Project;
+use App\Repository\ProjectRepository;
 use Doctrine\ORM\NoResultException;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
@@ -13,7 +13,7 @@ use Twig\Environment;
 abstract class Base
 {
     /**
-     * @var TaskRepository
+     * @var ProjectRepository
      */
     protected $repository;
     /**
@@ -21,13 +21,13 @@ abstract class Base
      */
     protected $twig;
 
-    public function __construct(TaskRepository $repository, Environment $twig)
+    public function __construct(ProjectRepository $repository, Environment $twig)
     {
         $this->repository = $repository;
         $this->twig = $twig;
     }
 
-    protected function getTaskOrFail(string $uuid): Task
+    protected function getProjectOrFail(string $uuid): Project
     {
         try {
             return $this->repository->findOneByUuidOrFail(Uuid::fromString($uuid));

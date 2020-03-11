@@ -1,5 +1,5 @@
 <ul class="task-list">
     {% for task in tasks %}
-        {% include 'atom/task-list-entry.html.twig' with { task : task } only %}
+        {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : true } only %}
     {% endfor %}
 </ul>

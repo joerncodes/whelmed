@@ -1,4 +1,8 @@
-<li>
+<li class="task-list-entry">
+    {% if showProject is defined and showProject == true and task.project is not null %}
+        {% include 'atom/project-link.html.twig' with { project : task.project } only %}
+        <i class="mdi mdi-arrow-right"></i>
+    {% endif %}
     <a href="{{ path('task.view', { uuid : task.uuid }) }}" class="{% if task.isCompleted %}completed{% endif %}">
         {{ task.title }}
         {% if task.completed %}

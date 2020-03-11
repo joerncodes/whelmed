@@ -1,13 +1,12 @@
-ul.task-list {
-  li a {
-    font-weight: bold;
+li.task-list-entry a {
+  font-weight: bold;
 
-    &.completed {
-     color: $text-muted;
+  &.completed {
+    color: $text-muted;
+    text-decoration: line-through;
 
-      time {
-        font-size: $font-size-sm;
-      }
+    time {
+      font-size: $font-size-sm;
     }
   }
 }

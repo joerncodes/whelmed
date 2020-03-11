@@ -1,5 +1,6 @@
 App\Entity\Task:
-  dummy_{1..10}:
+  task_{1..10}:
     title: <task()>
-    createdDate: <dateTimeBetween("-10 days", "now")>
-    completedDate: 40%? <dateTime("now")>
+    createdDate: <dateTimeBetween("-20 days", "now")>
+    completedDate: 40%? <dateTimeBetween($createdDate, "now")>
+    project: 30%? @project*

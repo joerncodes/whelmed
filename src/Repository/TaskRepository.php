@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Domain\TaskList;
 use App\Entity\Task;
+use App\Repository\Traits\HasUuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NoResultException;
@@ -17,6 +18,8 @@ use Ramsey\Uuid\Uuid;
  */
 class TaskRepository extends ServiceEntityRepository
 {
+    use HasUuid;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Task::class);
@@ -36,22 +39,6 @@ class TaskRepository extends ServiceEntityRepository
     public function findAll()
     {
         return new TaskList(parent::findAll());
-    }
-
-    public function findOneByUuidOrFail(Uuid $uuid)
-    {
-        $result = $this->createQueryBuilder('t')
-            ->andWhere('t.uuid = :uuid')
-            ->setParameter('uuid', $uuid)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult();
-
-        if(count($result) !== 1) {
-            throw new NoResultException();
-        }
-
-        return $result[0];
     }
 
     // /**

@@ -17,19 +17,31 @@ class TaskList
         Assert::allIsInstanceOf($tasks, Task::class);
         $this->tasks = $tasks;
 
-        usort($this->tasks, function($a, $b) {
+        usort($this->tasks, function ($a, $b) {
             /** @var Task $a */
             /** @var Task $b */
+            $aScore = $bScore = 0;
 
-            if($a->isCompleted() && $b->isCompleted()) {
-                return 0;
+            if ($a->isCompleted() && !$b->isCompleted()) {
+                $aScore += 4;
+            } elseif ($b->isCompleted() && !$a->isCompleted()) {
+                $bScore += 4;
             }
 
-            if($a->isCompleted() && !$b->isCompleted()) {
-                return 1;
+            if ($a->getProject() !== null && $b->getProject() === null) {
+                $bScore += 2;
+            } elseif ($b->getProject() !== null && $a->getProject() === null) {
+                $aScore += 2;
             }
 
-            return -1;
+            if ($a->getTitle() < $b->getTitle()) {
+                $bScore += 1;
+            } elseif ($b->getTitle() < $a->getTitle()) {
+                $aScore += 1;
+            }
+
+
+            return $aScore > $bScore;
         });
     }
 
