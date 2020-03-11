@@ -3,3 +3,4 @@
         {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : true } only %}
     {% endfor %}
 </ul>
+<p class="text-muted">{{ taskList.getIncomplete|length }} tasks open, {{ taskList.getCompleted|length }} done ({{ taskList.getTasks|length }} total).</p>

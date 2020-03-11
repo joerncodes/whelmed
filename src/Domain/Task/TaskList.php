@@ -50,6 +50,28 @@ class TaskList
         });
     }
 
+    public function getIncomplete(): array
+    {
+        $incomplete = [];
+        foreach($this->tasks as $task) {
+            if(!$task->isCompleted()) {
+                $incomplete[]  = $task;
+            }
+        }
+        return $incomplete;
+    }
+
+    public function getCompleted(): array
+    {
+        $completed = [];
+        foreach($this->tasks as $task) {
+            if($task->isCompleted()) {
+                $completed[]  = $task;
+            }
+        }
+        return $completed;
+    }
+
     public function getTasks(): array
     {
         return $this->tasks;

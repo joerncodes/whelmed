@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Purge &mdahs; are you sure?{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            {% if taskList.getTasks|length == 0 %}
+                <h1>Nothing to purge</h1>
+                <p class="lead">You're good!</p>
+            {% else %}
+                <h1>Purge &mdash; are you sure?</h1>
+
+                <p class="lead">Are you sure you want to purge? These tasks will be deleted <strong>permanently</strong>.</p>
+                <p>
+                    <a href="{{ path('tasks.purge.confirmed') }}" class="btn btn-danger"><i class="mdi mdi-skull"></i> Yup, purge 'em</a>
+                </p>
+
+                {% include 'molecule/task-list.html.twig' with { taskList : taskList } only %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
