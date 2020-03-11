@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Action\Task;
+namespace App\Action\Task\Modify;
 
+use App\Action\Task\Base;
 use App\Repository\TaskRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class Complete extends Base
+class Flag extends Base
 {
     /**
-     * @Route("/task/complete/{uuid}", name="task.complete")
+     * @Route("/task/flag/{uuid}", name="task.flag")
      */
-    public function __invoke(TaskRepository $taskRepository, Request $request, string $uuid)
+    public function __invoke(Request $request, string $uuid)
     {
         $task = $this->getTaskOrFail($uuid);
-        $task->setCompletedDate(new \DateTime());
+        $task->setFlagged(true);
 
         $this->repository->saveAndFlush($task);
-
-        $content = $this->twig->render('page/task/task-completed.html.twig', compact('task'));
 
         return new RedirectResponse(
             $request->headers->get('referer')

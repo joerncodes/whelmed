@@ -7,7 +7,7 @@ use App\Entity\Task;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class Inbox implements QueryInterface
+class Flagged implements QueryInterface
 {
     /**
      * @var QueryBuilder
@@ -25,7 +25,7 @@ class Inbox implements QueryInterface
             ->select('t')
             ->from(Task::class, 't')
             ->where(
-                $this->queryBuilder->expr()->isNull('t.project')
+                $this->queryBuilder->expr()->eq('t.flagged', true)
             )
             ->orderBy('t.title', 'ASC')
             ->getQuery()

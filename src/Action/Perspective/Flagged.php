@@ -2,20 +2,21 @@
 
 namespace App\Action\Perspective;
 
+use App\Domain\Query\Flagged as FlaggedQuery;
 use App\Domain\Query\Inbox as InboxQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class Inbox extends Base
+class Flagged extends Base
 {
     /**
-     * @Route("/perspective/inbox", name="perspective.inbox")
+     * @Route("/perspective/flagged", name="perspective.flagged")
      */
-    public function __invoke(InboxQuery $query): Response
+    public function __invoke(FlaggedQuery $query): Response
     {
-        $title = 'Inbox';
-        $description = 'The Inbox perspective shows all tasks that do not belong to a project';
+        $title = 'Flagged';
+        $description = 'Ths perspective shows all flagged tasks.';
 
         return $this->getPerspectiveContent($query, $title, $description);
     }

@@ -1,0 +1,9 @@
+{% if task.isFlagged %}
+    {% set flagPath = path('task.unflag', { uuid : task.uuid } ) %}
+{% else %}
+    {% set flagPath = path('task.flag', { uuid : task.uuid } ) %}
+{% endif %}
+
+<a href="{{ flagPath }}" class="task-action action-icon {% if task.isFlagged %}active{% endif %}">
+    <i class="mdi mdi-flag-variant"></i>
+</a>

@@ -4,3 +4,4 @@ App\Entity\Task:
     createdDate: <dateTimeBetween("-20 days", "now")>
     completedDate: 40%? <dateTimeBetween($createdDate, "now")>
     project: 30%? @project*
+    flagged: <boolean(20)>

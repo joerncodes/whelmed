@@ -32,6 +32,11 @@ class Task extends Base
      */
     private $project;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $flagged = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +62,18 @@ class Task extends Base
     public function setProject(?Project $project): self
     {
         $this->project = $project;
+
+        return $this;
+    }
+
+    public function isFlagged(): ?bool
+    {
+        return $this->flagged;
+    }
+
+    public function setFlagged(bool $flagged): self
+    {
+        $this->flagged = $flagged;
 
         return $this;
     }

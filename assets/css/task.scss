@@ -1,26 +1,29 @@
 li.task-list-entry {
+  a.action-icon {
+    color: $text-muted;
+    font-size: $font-size-lg * 1.5;
+
+    text-decoration: none;
+
+    &.active,
+    &:hover {
+      color: $highlight;
+    }
+  }
   .task-completion {
-    display: inline-block;
+    padding-left: $spacer;
+    /*display: inline-block;
     position: relative;
     top: $spacer * .3;
-    margin-right: $spacer * .5;
+    margin-right: $spacer * .5;*/
 
-    a {
-      color: $text-muted;
-      font-size: $font-size-lg * 1.5;
-
-      text-decoration: none;
-
-      &:hover {
-        color: $highlight;
-      }
-    }
   }
   .task-label {
     display: inline-block;
+    padding-top: $spacer * .6;
   }
 
-  padding: $spacer * .5 0;
+  //padding: $spacer * .5 0;
   border-bottom: 1px solid $border-color;
 
   a {
@@ -35,7 +38,9 @@ li.task-list-entry {
         font-size: $font-size-sm;
       }
     }
+  }
 
+  .task-actions {
   }
 
   ul.task-action-bar {

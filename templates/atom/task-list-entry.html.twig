@@ -1,26 +1,32 @@
 <li class="task-list-entry">
-    <div class="task-completion">
-        {% if task.isCompleted %}
-            <a href="{{ path('task.complete', { uuid : task.uuid }) }}" class="task-complete">
-                <i class="mdi mdi-check-circle-outline"></i>
-            </a>
-        {% else %}
-            <a href="{{ path('task.complete', { uuid : task.uuid }) }}" class="task-complete">
-                <i class="mdi mdi-circle-outline"></i>
-            </a>
-        {% endif %}
-    </div>
-    <div class="task-label">
-        {% if showProject is defined and showProject == true and task.project is not null %}
-            {% include 'atom/project-link.html.twig' with { project : task.project } only %}
-            <i class="mdi mdi-arrow-right"></i>
-        {% endif %}
-        <a href="{{ path('task.view', { uuid : task.uuid }) }}" class="{% if task.isCompleted %}completed{% endif %}">
-            {{ task.title }}
-            {% if task.completed %}
-                <br>
-                <time>completed {{ task.completedDate | whelmeddate }}</time>
+    <div class="row">
+        <div class="task-completion">
+            {% if task.isCompleted %}
+                <a href="{{ path('task.complete', { uuid : task.uuid }) }}" class="action-icon task-complete">
+                    <i class="mdi mdi-check-circle-outline"></i>
+                </a>
+            {% else %}
+                <a href="{{ path('task.complete', { uuid : task.uuid }) }}" class="action-icon task-complete">
+                    <i class="mdi mdi-circle-outline"></i>
+                </a>
             {% endif %}
-        </a>
+        </div>
+        <div class="task-label col-10">
+            {% if showProject is defined and showProject == true and task.project is not null %}
+                {% include 'atom/project-link.html.twig' with { project : task.project } only %}
+                <i class="mdi mdi-arrow-right"></i>
+            {% endif %}
+            <a href="{{ path('task.view', { uuid : task.uuid }) }}" class="{% if task.isCompleted %}completed{% endif %}">
+                {{ task.title }}
+                {% if task.completed %}
+                    <br>
+                    <time>completed {{ task.completedDate | whelmeddate }}</time>
+                {% endif %}
+            </a>
+        </div>
+        <div class="task-actions col-1">
+            {% include 'atom/task/task-action-flag.html.twig' with { task : task } only %}
+        </div>
+
     </div>
 </li>
