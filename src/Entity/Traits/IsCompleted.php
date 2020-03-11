@@ -9,6 +9,15 @@ trait IsCompleted
      */
     private $completedDate;
 
+    public function getCompletedDateString(): ?string
+    {
+        if($this->completedDate === null) {
+            return 'Not completed';
+        }
+
+        return $this->completedDate->format('Y-m-d H:i:s');
+    }
+
     public function getCompletedDate(): ?\DateTimeInterface
     {
         return $this->completedDate;

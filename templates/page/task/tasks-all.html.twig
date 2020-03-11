@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            {% include 'molecule/task-list.html.twig' with { tasks : tasks } only %}
+        </div>
+    </div>
+{% endblock %}

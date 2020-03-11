@@ -1,0 +1,5 @@
+<h4>{{ task.title }}</h4>
+<p class="muted">{{ task.uuid }}</p>
+{% if task.isCompleted %}
+    <p><em>Completed on {{ task.completedDateString }}</em></p>
+{% endif %}
