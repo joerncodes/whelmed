@@ -2,6 +2,9 @@
 <div class="row">
     <div class="col">
         <h1>{{ project.title }}</h1>
+
+        {% include 'molecule/project-add-task-form.html.twig' with { uuid : project.uuid } only %}
+
         <ul class="list-unstyled">
             {% for task in project.taskList.tasks %}
                 {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : false } only %}

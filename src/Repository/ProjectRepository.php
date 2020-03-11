@@ -28,7 +28,7 @@ class ProjectRepository extends ServiceEntityRepository
             ->orderBy('p.title', 'ASC')
             ->setMaxResults(10)
             ->select('p.uuid, p.title')
-            ->orderBy('p.title','ASC')
+            ->orderBy('p.title', 'ASC')
             ->getQuery()
             ->getResult();
     }
