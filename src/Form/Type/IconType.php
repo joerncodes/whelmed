@@ -13,7 +13,7 @@ class IconType extends AbstractType
     {
         $choices = [];
 
-        foreach(Icons::ICONS as $label => $icon) {
+        foreach (Icons::ICONS as $label => $icon) {
             $choices[$label] = $icon;
         }
 

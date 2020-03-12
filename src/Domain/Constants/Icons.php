@@ -2,7 +2,8 @@
 
 namespace App\Domain\Constants;
 
-interface Icons {
+interface Icons
+{
     public const ICONS = [
         'Skull' => 'mdi-skull',
         'Alarm' => 'mdi-alarm-multiple',

@@ -1,5 +1,13 @@
-.project-list.button-nav {
-  background-color: $less-dark;
+.project-list {
+  hr {
+    width: 90%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  }
+  &.button-nav {
+    background-color: $less-dark;
+  }
 }
 
 .avatar {

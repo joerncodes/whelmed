@@ -3,5 +3,12 @@
         {% for project in projectList.getProjects %}
             {% include 'atom/project-link.html.twig' with { project : project, class : 'btn' } %}
         {% endfor %}
+
+        <hr>
+
+        <a href="{{ path('project.add') }}" rel="modal:open" class="btn project-link">
+            <i class="mdi mdi-plus-box-multiple"></i>
+                Add project
+        </a>
     </div>
 </div>
