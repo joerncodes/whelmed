@@ -1,6 +1,11 @@
-<ul class="task-list list-unstyled">
-    {% for task in taskList.getTasks %}
-        {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : true } only %}
-    {% endfor %}
-</ul>
-<p class="text-muted">{{ taskList.getIncomplete|length }} tasks open, {{ taskList.getCompleted|length }} done ({{ taskList.getTasks|length }} total).</p>
+{% if taskList.getTasks|length %}
+    <ul class="task-list list-unstyled">
+        {% for task in taskList.getTasks %}
+            {% include 'atom/task-list-entry.html.twig' with { task : task, showProject : true } only %}
+        {% endfor %}
+    </ul>
+    <p class="text-muted">{{ taskList.getIncomplete|length }} tasks open, {{ taskList.getCompleted|length }} done
+        ({{ taskList.getTasks|length }} total).</p>
+{% else %}
+    <p class="lead text-center mt-5">No tasks in this list.<br>¯\_(ツ)_/¯</p>
+{% endif %}
