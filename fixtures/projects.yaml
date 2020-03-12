@@ -2,3 +2,4 @@ App\Entity\Project:
   project_{1..3}:
     title: <project()>
     createdDate: <dateTimeBetween("-10 days", "now")>
+    user: '@user_1'

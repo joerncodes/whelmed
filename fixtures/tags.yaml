@@ -1,3 +1,4 @@
 App\Entity\Tag:
   tag_{1..10}:
     title: <tag()>
+    user: '@user_1'
