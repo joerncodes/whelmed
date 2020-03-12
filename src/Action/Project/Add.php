@@ -47,8 +47,8 @@ class Add
         ProjectRepository $repository,
         Security $security,
         Environment $twig,
-        UrlGeneratorInterface $router)
-    {
+        UrlGeneratorInterface $router
+    ) {
         $this->formFactory = $formFactory;
         $this->repository = $repository;
         $this->user = $security->getUser();
@@ -66,7 +66,7 @@ class Add
         $form = $this->formFactory->create(ProjectType::class, $project);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $project = $form->getData();
             /** @var Project $project */
             $project->setUser($this->user);
@@ -78,7 +78,8 @@ class Add
         }
 
         $content = $this->twig->render(
-            'organism/project/form.html.twig', [
+            'organism/project/form.html.twig',
+            [
                 'project' => $project,
                 'form' => $form->createView()
             ]

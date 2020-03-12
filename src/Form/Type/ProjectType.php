@@ -24,6 +24,7 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
+            ->add('icon', IconType::class)
             ->add('save', SubmitType::class)
             ->setAction($this->router->generate('project.add'));
     }

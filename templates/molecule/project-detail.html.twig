@@ -1,7 +1,10 @@
 
 <div class="row">
     <div class="col">
-        <h1>{{ project.title }}</h1>
+        <h1>
+            {% include 'atom/project/icon.html.twig' with { icon : project.icon } only %}
+            {{ project.title }}
+        </h1>
 
         {% include 'molecule/project-add-task-form.html.twig' with { uuid : project.uuid } only %}
 
