@@ -22,20 +22,6 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProjectList()
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.title', 'ASC')
-            ->setMaxResults(10)
-            ->select('p.uuid, p.title')
-            ->orderBy('p.title', 'ASC')
-            ->getQuery()
-            ->getResult();
-    }
-
     // /**
     //  * @return Project[] Returns an array of Project objects
     //  */

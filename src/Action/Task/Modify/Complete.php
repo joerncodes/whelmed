@@ -2,7 +2,7 @@
 
 namespace App\Action\Task\Modify;
 
-use App\Domain\Query\Task\UuidQuery;
+use App\Domain\Query\Task\ByUuid;
 use App\Repository\TaskRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,12 +16,12 @@ class Complete extends Base
      */
     public function __invoke(string $uuid): RedirectResponse
     {
-            $task = $this->getTaskOrFail($uuid)
+        $task = $this->getTaskOrFail($uuid)
                 ->setCompletedDate(new \DateTime())
                 ->setFlagged(false);
 
-            $this->repository->saveAndFlush($task);
+        $this->repository->saveAndFlush($task);
 
-            return $this->redirectBack();
+        return $this->redirectBack();
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Action\Project;
 
-use App\Entity\Project;
-use App\Repository\ProjectRepository;
+use App\Domain\Query\Project\All;
+use App\Domain\Query\Project\ByUuid;
 use Doctrine\ORM\NoResultException;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
@@ -13,30 +13,36 @@ use Twig\Environment;
 abstract class Base
 {
     /**
-     * @var ProjectRepository
-     */
-    protected $repository;
-    /**
      * @var Environment
      */
     protected $twig;
 
-    public function __construct(ProjectRepository $repository, Environment $twig)
+    /**
+     * @var All
+     */
+    private $allQuery;
+    /**
+     * @var ByUuid
+     */
+    private $byUuid;
+
+    public function __construct(All $allQuery, ByUuid $byUuid, Environment $twig)
     {
-        $this->repository = $repository;
         $this->twig = $twig;
+        $this->allQuery = $allQuery;
+        $this->byUuid = $byUuid;
     }
 
     protected function getViewParameters(): array
     {
-        $projectList = $this->repository->getProjectList();
+        $projectList = $this->allQuery->getProjectList();
         return compact('projectList');
     }
 
     protected function getProjectOrFail(string $uuid): \App\Entity\Base
     {
         try {
-            return $this->repository->findOneByUuidOrFail(Uuid::fromString($uuid));
+            return $this->byUuid->get(Uuid::fromString($uuid));
         } catch (InvalidUuidStringException | NoResultException $e) {
             throw new NotFoundHttpException();
         }

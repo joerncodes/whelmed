@@ -2,7 +2,7 @@
 
 namespace App\Action\Task\Modify;
 
-use App\Domain\Query\Task\UuidQuery;
+use App\Domain\Query\Task\ByUuid;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\NoResultException;
@@ -18,7 +18,7 @@ use Webmozart\Assert\Assert;
 abstract class Base
 {
     /**
-     * @var UuidQuery
+     * @var ByUuid
      */
     protected $query;
 
@@ -35,7 +35,7 @@ abstract class Base
      */
     private $router;
 
-    public function __construct(UuidQuery $query, TaskRepository $repository, RequestStack $requestStack , UrlGeneratorInterface $router)
+    public function __construct(ByUuid $query, TaskRepository $repository, RequestStack $requestStack, UrlGeneratorInterface $router)
     {
         $this->query = $query;
         $this->repository = $repository;
@@ -52,15 +52,13 @@ abstract class Base
         Assert::notNull($path);
 
         return new RedirectResponse($path);
-
     }
 
     protected function getTaskOrFail(string $uuid): Task
     {
         try {
             return $this->query->get(Uuid::fromString($uuid));
-        }
-        catch(InvalidUuidStringException | NoResultException $e) {
+        } catch (InvalidUuidStringException | NoResultException $e) {
             throw new NotFoundHttpException();
         }
     }

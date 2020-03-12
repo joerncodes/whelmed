@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Domain\Query\Task;
+namespace App\Domain\Query\Project;
 
+use App\Domain\Project\ProjectList;
 use App\Domain\Task\TaskList;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,17 +27,17 @@ abstract class Base
         $this->user = $security->getUser();
     }
 
-    protected function executeQuery(QueryBuilder $queryBuilder): TaskList
+    protected function executeQuery(QueryBuilder $queryBuilder): ProjectList
     {
         $result = $queryBuilder->andWhere(
-            $queryBuilder->expr()->eq('t.user', $this->user->getId())
+            $queryBuilder->expr()->eq('p.user', $this->user->getId())
         )
-            ->orderBy('t.title', 'ASC')
+            ->orderBy('p.title', 'ASC')
             ->getQuery()
             ->getResult();
 
-        return new TaskList($result);
+        return new ProjectList($result);
     }
 
-    abstract public function getTaskList(): TaskList;
+    abstract public function getProjectList(): ProjectList;
 }

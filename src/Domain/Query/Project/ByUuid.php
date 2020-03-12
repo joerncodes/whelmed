@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Domain\Query\Task;
+namespace App\Domain\Query\Project;
 
-use App\Domain\Task\TaskList;
-use App\Entity\Task;
+use App\Entity\Project;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NoResultException;
@@ -11,7 +10,7 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Security;
 use Webmozart\Assert\Assert;
 
-class UuidQuery implements QueryInterface
+class ByUuid
 {
     /**
      * @var \Doctrine\ORM\QueryBuilder
@@ -25,14 +24,14 @@ class UuidQuery implements QueryInterface
         Assert::isInstanceOf($this->user, User::class);
     }
 
-    public function get(Uuid $uuid): Task
+    public function get(Uuid $uuid): Project
     {
         $result = $this->queryBuilder
-            ->select('t')
-            ->from(Task::class, 't')
+            ->select('p')
+            ->from(Project::class, 'p')
             ->andWhere(
-                $this->queryBuilder->expr()->eq('t.uuid', ':uuid'),
-                $this->queryBuilder->expr()->eq('t.user', ':user')
+                $this->queryBuilder->expr()->eq('p.uuid', ':uuid'),
+                $this->queryBuilder->expr()->eq('p.user', ':user')
             )
             ->setParameter('uuid', $uuid->toString())
             ->setParameter('user', $this->user)
@@ -40,7 +39,7 @@ class UuidQuery implements QueryInterface
             ->getResult()
         ;
 
-        if(count($result) !== 1) {
+        if (count($result) !== 1) {
             throw new NoResultException();
         }
 

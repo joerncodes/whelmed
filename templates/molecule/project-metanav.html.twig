@@ -1,6 +1,6 @@
 <div class="col-2 h-100 project-list button-nav">
     <div class="btn-group-vertical">
-        {% for project in projectList %}
+        {% for project in projectList.getProjects %}
             {% include 'atom/project-link.html.twig' with { project : project, class : 'btn' } %}
         {% endfor %}
     </div>

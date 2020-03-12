@@ -2,7 +2,7 @@
 
 namespace App\Action\Perspective;
 
-use App\Domain\Query\Task\QueryInterface;
+use App\Domain\Query\Task\Base as BaseQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -18,7 +18,7 @@ abstract class Base
         $this->twig = $twig;
     }
 
-    protected function getPerspectiveContent(QueryInterface $query, string $title, string $description): Response
+    protected function getPerspectiveContent(BaseQuery $query, string $title, string $description): Response
     {
         $taskList = $query->getTaskList();
 
