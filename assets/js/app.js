@@ -9,8 +9,10 @@
 import '../css/global.scss';
 import '../css/app.css';
 import 'bootstrap';
+import 'jquery-modal';
 
 require('bootstrap');
+require('jquery-modal');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
