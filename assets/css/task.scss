@@ -37,6 +37,10 @@ li.task-list-entry {
   a {
     font-weight: bold;
 
+    &.overdue {
+      color: $highlight;
+    }
+
     &.completed {
       color: $super-light;
 

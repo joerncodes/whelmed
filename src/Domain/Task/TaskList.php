@@ -39,10 +39,10 @@ class TaskList
                 $aScore += 2;
             }
 
-            if($a->isCompleted()) {
+            if ($a->isCompleted()) {
                 $aScore += 16;
             }
-            if($b->isCompleted()) {
+            if ($b->isCompleted()) {
                 $bScore += 16;
             }
 

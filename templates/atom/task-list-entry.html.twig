@@ -12,7 +12,11 @@
             {% endif %}
         </div>
         <div class="task-label col-10">
-            <a href="{{ path('task.view', { uuid : task.uuid }) }}" class="{% if task.isCompleted %}completed{% endif %}">
+            <a href="{{ path('task.view', { uuid : task.uuid }) }}"
+               class="
+                    {% if task.isCompleted %} completed{% endif %}
+                    {% if not task.isCompleted and task.dueDate is not null and task.dueDate|past %}overdue{% endif %}
+                ">
                 {{ task.title }}
                 {% if task.completed %}
                     <br>
@@ -21,6 +25,15 @@
             </a>
 
             <p class="text-muted">
+                {% if task.dueDate is not null %}
+                    <i class="mdi mdi-alarm-check"></i>
+                    {{ task.dueDate|whelmeddate }}
+
+                    {% if showProject is defined and showProject == true or task.tag|length %}
+                        <i class="mdi mdi-circle-small"></i>
+                    {% endif %}
+                {% endif %}
+
                 {% if showProject is defined and showProject == true and task.project is not null %}
                     {% include 'atom/project-link.html.twig' with { project : task.project } only %}
 

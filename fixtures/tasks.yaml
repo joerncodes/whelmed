@@ -1,9 +1,10 @@
 App\Entity\Task:
-  task_{1..10}:
+  task_{1..20}:
     title: <task()>
     createdDate: <dateTimeBetween("-20 days", "now")>
     completedDate: 40%? <dateTimeBetween($createdDate, "now")>
     project: 30%? @project*
     flagged: <boolean(20)>
+    dueDate: 60%? <dateTimeBetween("-10 days", "20days")>
     tag: '<numberBetween(0,3)>x @tag*'
     user: '@user_*'

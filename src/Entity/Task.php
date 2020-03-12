@@ -50,6 +50,11 @@ class Task extends Base
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dueDate;
+
     public function __construct()
     {
         $this->tag = new ArrayCollection();
@@ -130,6 +135,18 @@ class Task extends Base
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDueDate(): ?\DateTimeInterface
+    {
+        return $this->dueDate;
+    }
+
+    public function setDueDate(?\DateTimeInterface $dueDate): self
+    {
+        $this->dueDate = $dueDate;
 
         return $this;
     }
