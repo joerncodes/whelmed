@@ -15,4 +15,3 @@ class All extends Base
         );
     }
 }
-

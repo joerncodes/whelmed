@@ -60,7 +60,6 @@ class TaskRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
             ;
-
     }
 
     // /**

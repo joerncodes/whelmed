@@ -6,5 +6,4 @@ use App\Domain\Task\TaskList;
 
 interface QueryInterface
 {
-    public function getTaskList(): TaskList;
 }

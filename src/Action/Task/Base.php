@@ -13,26 +13,12 @@ use Twig\Environment;
 abstract class Base
 {
     /**
-     * @var TaskRepository
-     */
-    protected $repository;
-    /**
      * @var Environment
      */
     protected $twig;
 
-    public function __construct(TaskRepository $repository, Environment $twig)
+    public function __construct(Environment $twig)
     {
-        $this->repository = $repository;
         $this->twig = $twig;
-    }
-
-    protected function getTaskOrFail(string $uuid): Task
-    {
-        try {
-            return $this->repository->findOneByUuidOrFail(Uuid::fromString($uuid));
-        } catch (InvalidUuidStringException | NoResultException $e) {
-            throw new NotFoundHttpException();
-        }
     }
 }

@@ -29,7 +29,7 @@ abstract class Base implements QueryInterface
     protected function executeQuery(QueryBuilder $queryBuilder): TaskList
     {
         $result = $queryBuilder->andWhere(
-           $queryBuilder->expr()->eq('t.user', $this->user->getId())
+            $queryBuilder->expr()->eq('t.user', $this->user->getId())
         )
             ->orderBy('t.title', 'ASC')
             ->getQuery()
@@ -39,5 +39,4 @@ abstract class Base implements QueryInterface
     }
 
     abstract public function getTaskList(): TaskList;
-
 }
