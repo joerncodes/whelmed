@@ -19,5 +19,4 @@ class Overdue extends Base
 
         return $this->getPerspectiveContent($query, $title, $description);
     }
-
 }

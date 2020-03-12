@@ -19,11 +19,16 @@ abstract class Base
      * @var User
      */
     protected $user;
+    /**
+     * @var TaskList
+     */
+    private $taskList;
 
-    public function __construct(EntityManagerInterface $em, Security $security)
+    public function __construct(EntityManagerInterface $em, Security $security, TaskList $taskList)
     {
         $this->queryBuilder = $em->createQueryBuilder();
         $this->user = $security->getUser();
+        $this->taskList = $taskList;
     }
 
     protected function executeQuery(QueryBuilder $queryBuilder): TaskList
@@ -35,7 +40,7 @@ abstract class Base
             ->getQuery()
             ->getResult();
 
-        return new TaskList($result);
+        return $this->taskList->setTasks($result);
     }
 
     abstract public function getTaskList(): TaskList;

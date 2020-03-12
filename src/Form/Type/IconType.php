@@ -11,14 +11,14 @@ class IconType extends AbstractType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
-        $choices = [];
+        $choices = ['[none]' => ''];
 
         foreach (Icons::ICONS as $label => $icon) {
             $choices[$label] = $icon;
         }
 
         $resolver->setDefaults([
-            'choices' => $choices
+            'choices' => $choices,
         ]);
     }
 

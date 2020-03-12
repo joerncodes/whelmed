@@ -4,6 +4,7 @@ namespace App\Action\Project;
 
 use App\Domain\Query\Project\All;
 use App\Domain\Query\Project\ByUuid;
+use App\Domain\Task\TaskList;
 use Doctrine\ORM\NoResultException;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
@@ -20,17 +21,22 @@ abstract class Base
     /**
      * @var All
      */
-    private $allQuery;
+    protected $allQuery;
     /**
      * @var ByUuid
      */
-    private $byUuid;
+    protected $byUuid;
+    /**
+     * @var TaskList
+     */
+    protected $taskList;
 
-    public function __construct(All $allQuery, ByUuid $byUuid, Environment $twig)
+    public function __construct(All $allQuery, ByUuid $byUuid, Environment $twig, TaskList $taskList)
     {
         $this->twig = $twig;
         $this->allQuery = $allQuery;
         $this->byUuid = $byUuid;
+        $this->taskList = $taskList;
     }
 
     protected function getViewParameters(): array

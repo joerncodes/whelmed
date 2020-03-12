@@ -2,6 +2,7 @@
 
 namespace App\Domain\Task;
 
+use App\Domain\Task\Score\TaskScore;
 use App\Entity\Task;
 use Webmozart\Assert\Assert;
 
@@ -11,12 +12,41 @@ class TaskList
      * @var array
      */
     private $tasks;
+    /**
+     * @var TaskScore
+     */
+    private $taskScore;
 
-    public function __construct(array $tasks)
+    public function __construct(TaskScore $taskScore)
+    {
+        $this->taskScore = $taskScore;
+    }
+
+    private function sort()
+    {
+        $taskScore = $this->taskScore;
+
+        usort($this->tasks, function (Task $a, Task $b) use($taskScore): bool {
+            $aScore = $taskScore->getScore($a);
+            $bScore = $taskScore->getScore($b);
+
+            if($aScore === $bScore) {
+                return 0;
+            }
+
+            return $aScore < $bScore;
+        });
+    }
+
+    public function setTasks(array $tasks): self
     {
         Assert::allIsInstanceOf($tasks, Task::class);
         $this->tasks = $tasks;
+        $this->sort();
 
+        return $this;
+
+        /*
         usort($this->tasks, function (Task $a, Task $b): bool {
             $aScore = $bScore = 0;
 
@@ -55,6 +85,7 @@ class TaskList
 
             return $aScore > $bScore;
         });
+            */
     }
 
     public function getIncomplete(): array

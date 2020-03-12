@@ -45,14 +45,25 @@ class Project extends Base
      */
     private $icon;
 
+    /**
+     * @var TaskList|null
+     */
+    private $taskList = null;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
     }
 
-    public function getTaskList(): TaskList
+    public function getTaskList(): ?TaskList
     {
-        return new TaskList($this->tasks->toArray());
+        return $this->taskList;
+    }
+
+    public function setTaskList(TaskList $taskList): self
+    {
+        $this->taskList = $taskList;
+        return $this;
     }
 
     public function getId(): ?int

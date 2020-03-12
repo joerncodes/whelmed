@@ -1,4 +1,10 @@
 .project-list {
+  span {
+    margin-left: $spacer * .5;
+    display: inline-block;
+    color: darken($super-light, 20);
+  }
+
   hr {
     width: 90%;
     border: 0;
