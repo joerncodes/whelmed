@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Domain\Task\TaskList;
 use App\Entity\Task;
+use App\Entity\User;
 use App\Repository\Traits\HasUuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -46,9 +47,20 @@ class TaskRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
-    public function findAllTasks(): TaskList
+    public function findAllTasks(User $user): TaskList
     {
-        return new TaskList(parent::findAll());
+        return new TaskList($this->findAllByUser($user));
+    }
+
+    public function findAllByUser(User $user)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.user= :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+            ;
+
     }
 
     // /**

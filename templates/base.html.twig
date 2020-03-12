@@ -20,8 +20,9 @@
                     </main>
                 </div>
             </div>
-
-            {% block javascripts %}{% endblock %}
         </div>
+
+        {{ encore_entry_script_tags('app') }}
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

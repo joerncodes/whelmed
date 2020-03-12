@@ -2,8 +2,7 @@
 
 namespace App\Action\Perspective;
 
-use App\Domain\Query\Inbox as InboxQuery;
-use App\Domain\Query\QueryInterface;
+use App\Domain\Query\Task\QueryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 

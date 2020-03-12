@@ -6,4 +6,4 @@ App\Entity\Task:
     project: 30%? @project*
     flagged: <boolean(20)>
     tag: '<numberBetween(0,3)>x @tag*'
-    user: '@user_1'
+    user: '@user_*'

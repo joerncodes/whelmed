@@ -3,8 +3,13 @@ parameters:
   hash: $argon2id$v=19$m=65536,t=4,p=1$BZwmvcx3xLtQW5JP2k0rvQ$VRrdX6ZI1oBDzAet1LBVRW+wzjYJmdowtyZjSSYwFRw
 
 App\Entity\User:
-  user_1:
-    username: <userName()>
-    email: 'bob@whelmed.com'
+  user_scott:
+    username: Scott
+    email: 'scott@whelmed.io'
     password: <{hash}>
-    profileImage: https://api.adorable.io/avatars/285/$email
+    profileImage: https://i.imgur.com/3tYAIOr.jpg
+  user_ramona:
+    username: Ramona
+    email: 'ramona@whelmed.io'
+    password: <{hash}>
+    profileImage: https://i.imgur.com/QB5z0ud.png

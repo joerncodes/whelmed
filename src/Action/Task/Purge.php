@@ -2,7 +2,7 @@
 
 namespace App\Action\Task;
 
-use App\Domain\Query\Completed;
+use App\Domain\Query\Task\Completed;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;

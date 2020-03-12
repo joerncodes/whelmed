@@ -30,5 +30,4 @@ class Login
 
         return new Response($content);
     }
-
 }

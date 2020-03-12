@@ -2,7 +2,7 @@
 
 namespace App\Action\Task;
 
-use App\Domain\Query\Completed;
+use App\Domain\Query\Task\Completed;
 use App\Repository\TaskRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;

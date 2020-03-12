@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Query;
+namespace App\Domain\Query\Task;
 
 use App\Domain\Task\TaskList;
 

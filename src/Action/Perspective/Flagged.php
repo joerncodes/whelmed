@@ -2,8 +2,7 @@
 
 namespace App\Action\Perspective;
 
-use App\Domain\Query\Flagged as FlaggedQuery;
-use App\Domain\Query\Inbox as InboxQuery;
+use App\Domain\Query\Task\Flagged as FlaggedQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;

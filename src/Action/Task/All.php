@@ -2,6 +2,7 @@
 
 namespace App\Action\Task;
 
+use App\Domain\Query\Task\All as AllQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,10 +12,9 @@ class All extends Base
      * @Route("/", name="task.all")
      * @return Response
      */
-    public function __invoke()
+    public function __invoke(AllQuery $query)
     {
-        $response = '';
-        $taskList= $this->repository->findAllTasks();
+        $taskList = $query->getTaskList();
 
         $title = 'All tasks';
 
