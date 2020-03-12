@@ -24,7 +24,7 @@ class Flag extends Base
         $this->repository->saveAndFlush($task);
 
         $path = $request->headers->get('referer');
-        if($path === null) {
+        if ($path === null) {
             $router->generate('task.all');
         }
         Assert::notNull($path);
