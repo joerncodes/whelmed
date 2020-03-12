@@ -39,6 +39,13 @@ class TaskList
                 $aScore += 2;
             }
 
+            if($a->isCompleted()) {
+                $aScore += 16;
+            }
+            if($b->isCompleted()) {
+                $bScore += 16;
+            }
+
             if ($a->getTitle() < $b->getTitle()) {
                 $bScore += 1;
             } elseif ($b->getTitle() < $a->getTitle()) {
