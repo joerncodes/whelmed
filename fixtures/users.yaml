@@ -1,7 +1,10 @@
+parameters:
+  # 'whelmed'
+  hash: $argon2id$v=19$m=65536,t=4,p=1$BZwmvcx3xLtQW5JP2k0rvQ$VRrdX6ZI1oBDzAet1LBVRW+wzjYJmdowtyZjSSYwFRw
+
 App\Entity\User:
   user_1:
     username: <userName()>
-    email: <email()>
-    password: <password()>
+    email: 'bob@whelmed.com'
+    password: <{hash}>
     profileImage: https://api.adorable.io/avatars/285/$email
-
