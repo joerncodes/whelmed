@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
+{% block bodyclass %}login{% endblock %}
+{% block bodystyle %}background-image:url({{ randomPhoto.urls.full }});{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -14,15 +16,25 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <div class="row mt-4">
+        <div class="col-4 ml-auto mr-auto p-5">
+            <h1 class="mb-5 font-weight-normal text-center" style="color: {{ randomPhoto.color }};">Log in</h1>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+            <div class="form-group">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autofocus required placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="inputPassword" class="form-control" required placeholder="Password">
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button class="btn btn-lg" style="background-color: {{ randomPhoto.color }}; border-color: {{ randomPhoto.color }}" type="submit"><i class="mdi mdi-login-variant"></i> Relax</button>
+
+        </div>
+    </div>
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -35,8 +47,5 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
 </form>
 {% endblock %}

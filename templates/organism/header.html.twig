@@ -1,34 +1,37 @@
-<div class="row">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand mr-5" href="{{ path('task.all') }}">
-                <img src="{{ asset('/build/images/logo-whelmed.png') }}" alt="" class="logo"">
-            </a>
+{% if app.user %}
+    <div class="row">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand mr-5" href="{{ path('task.all') }}">
+                    <img src="{{ asset('/build/images/logo-whelmed.png') }}" alt="" class="logo"">
+                </a>
 
-            {% if app.user %}
-                <a href="{{ path('project.add') }}" rel="modal:open" class="navbar-item icon">
-                    <i class="mdi mdi-plus-box-multiple"></i>
-                </a>
-                <a href="" class="navbar-item icon">
-                    <i class="mdi mdi-plus-circle"></i>
-                </a>
-                <a href="{{ path('tasks.purge') }}" class="navbar-item icon">
-                    <i class="mdi mdi-broom"></i>
-                </a>
-                {% include 'molecule/task-quick-add-form.html.twig' %}
-
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle navbar-item ml-4" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ app.user.username }}
-                        <img src="{{ app.user.profileImage }}" alt="" class="avatar">
+                {% if app.user %}
+                    <a href="{{ path('project.add') }}" rel="modal:open" class="navbar-item icon">
+                        <i class="mdi mdi-plus-box-multiple"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Profile</a>
-                        <a class="dropdown-item" href="{{ path('security.logout') }}">Logout</a>
-                    </div>
-                </li>
+                    <a href="" class="navbar-item icon">
+                        <i class="mdi mdi-plus-circle"></i>
+                    </a>
+                    <a href="{{ path('tasks.purge') }}" class="navbar-item icon">
+                        <i class="mdi mdi-broom"></i>
+                    </a>
+                    {% include 'molecule/task-quick-add-form.html.twig' %}
 
-            {% endif %}
-        </nav>
-    </header>
-</div>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle navbar-item ml-4" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ app.user.username }}
+                            <img src="{{ app.user.profileImage }}" alt="" class="avatar">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="">Profile</a>
+                            <a class="dropdown-item" href="{{ path('security.logout') }}">Logout</a>
+                        </div>
+                    </li>
+
+                {% endif %}
+            </nav>
+        </header>
+    </div>
+{% endif %}

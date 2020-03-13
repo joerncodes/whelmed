@@ -26,11 +26,11 @@ class TaskList
     {
         $taskScore = $this->taskScore;
 
-        usort($this->tasks, function (Task $a, Task $b) use($taskScore): bool {
+        usort($this->tasks, function (Task $a, Task $b) use ($taskScore): bool {
             $aScore = $taskScore->getScore($a);
             $bScore = $taskScore->getScore($b);
 
-            if($aScore === $bScore) {
+            if ($aScore === $bScore) {
                 return 0;
             }
 

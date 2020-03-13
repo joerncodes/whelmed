@@ -23,7 +23,7 @@ class TaskScore
     {
         $score = 0;
 
-        foreach($this->taskScoreModifiers as $taskScoreModifier) {
+        foreach ($this->taskScoreModifiers as $taskScoreModifier) {
             /** @var TaskScoreInterface $taskScoreModifier */
             $score += $taskScoreModifier->getScore($task);
         }
