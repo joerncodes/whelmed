@@ -16,7 +16,7 @@ class WhelmedDate extends AbstractExtension
 
     public function formatDate(\DateTimeInterface $dateTime, $addTime = false): string
     {
-        if($addTime) {
+        if ($addTime) {
             return $dateTime->format('Y-m-d H:i:s');
         }
         return $dateTime->format('Y-m-d');

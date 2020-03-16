@@ -2,8 +2,10 @@
 
 namespace App\Action\Task;
 
+use App\Domain\Task\Tokenizer\Tokenizer;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
+use App\Transfer\TaskTokenizerPart;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +21,19 @@ class QuickAdd extends Base
     /**
      * @Route("/task/quick-add", name="task.quick-add", methods={"POST"})
      */
-    public function __invoke(Request $request, TaskRepository $repository, UrlGeneratorInterface $router, Security $security): Response
+    public function __invoke(Request $request, TaskRepository $repository, UrlGeneratorInterface $router,
+         Security $security, Tokenizer $tokenizer): Response
     {
         if (!$request->request->has(self::FORM_INPUT_NAME)) {
             throw new NotFoundHttpException();
         }
 
-        $task = (new Task())
-            ->setTitle($request->request->get(self::FORM_INPUT_NAME))
+        $tokenizerPart = $tokenizer->tokenize(
+            new TaskTokenizerPart($request->request->get(self::FORM_INPUT_NAME), new Task())
+        );
+
+        $task = $tokenizerPart->getTask()
+            ->setTitle($tokenizerPart->getTaskTitle())
             ->setUser($security->getUser())
         ;
 

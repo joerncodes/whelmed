@@ -15,6 +15,9 @@ services:
         App\Domain\Task\Score\TaskScoreInterface:
             tags:
                 - { name: 'task.score' }
+        App\Domain\Task\Tokenizer\TokenizerInterface:
+            tags:
+                - { name: 'task.tokenizer' }
 
     App\Faker\Provider\TaskProvider: ~
 
@@ -36,6 +39,10 @@ services:
     App\Domain\Task\Score\TaskScore:
         arguments:
             - !tagged_iterator task.score
+            -
+    App\Domain\Task\Tokenizer\Tokenizer:
+        arguments:
+            - !tagged_iterator task.tokenizer
 
     App\Action\Project\Add:
         public: true
