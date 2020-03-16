@@ -2,7 +2,7 @@
     <div class="row">
         <div class="task-completion">
             {% if task.isCompleted %}
-                <a href="{{ path('task.complete', { uuid : task.uuid }) }}" class="action-icon task-complete">
+                <a href="{{ path('task.incomplete', { uuid : task.uuid }) }}" class="action-icon task-complete">
                     <i class="mdi mdi-check-circle-outline"></i>
                 </a>
             {% else %}
@@ -35,7 +35,7 @@
                 {% endif %}
 
                 {% if showProject is defined and showProject == true and task.project is not null %}
-                    {% include 'atom/project-link.html.twig' with { project : task.project } only %}
+                    {% include 'atom/project-link.html.twig' with { project : task.project, showTaskCount : false } only %}
 
                     {% if task.tag|length %}
                         <i class="mdi mdi-circle-small"></i>
