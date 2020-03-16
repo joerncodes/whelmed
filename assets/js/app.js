@@ -12,13 +12,21 @@ import 'bootstrap';
 import 'jquery-modal';
 import $ from 'jquery';
 
-const datepicker = require('js-datepicker');
+const flatpickr = require('flatpickr');
 require('bootstrap');
 require('jquery-modal');
+
 
 $(document).on($.modal.OPEN, function() {
     if ($('.task-form:visible').length) {
         $('#task-title').focus();
+        const dueDatePicker = flatpickr('#task-due-date', {
+            enableTime: true,
+            onClose: function () {
+                $('.due-date').toggle();
+            }
+        });
+
         $('.task-form .task-add-project').click(function() {
             $('.task-form .projects').show();
             return false;
@@ -26,6 +34,11 @@ $(document).on($.modal.OPEN, function() {
         $('.task-form .projects .task-choose-project').bind('click', function() {
             $('#task-project-uuid').val($(this).data('uuid'));
             $('.task-form .projects').hide();
+            return false;
+        });
+        $('.task-form .task-due-date').bind('click', function() {
+            $('.due-date').toggle();
+            dueDatePicker.open();
             return false;
         });
         $('.task-form .task-flag-project').bind('click', function() {

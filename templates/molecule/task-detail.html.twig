@@ -18,13 +18,13 @@
     </tr>
     <tr>
         <th>Created</th>
-        <td>{{ task.createdDate | whelmeddate }}</td>
+        <td>{{ task.createdDate | whelmeddate(true) }}</td>
     </tr>
     <tr>
         <th>Due date</th>
         <td>
             {% if task.dueDate is not null %}
-                {{ task.dueDate | whelmeddate }}
+                {{ task.dueDate | whelmeddate(true) }}
             {% else %}
                 [No due date]
             {% endif %}

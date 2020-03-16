@@ -76,6 +76,10 @@ class Add
             if (!empty($data['task']['project-uuid'])) {
                 $task->setProject($this->byUuid->get(Uuid::fromString($data['task']['project-uuid'])));
             }
+            if (!empty($data['task']['dueDate'])) {
+                $dateTime = (new \DateTimeImmutable())->setTimestamp(strtotime($data['task']['dueDate']));
+                $task->setDueDate($dateTime);
+            }
             $task->setFlagged(
                 !empty($data['task']['flagged']) && $data['task']['flagged'] === 'true'
             );
