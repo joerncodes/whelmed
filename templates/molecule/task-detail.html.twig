@@ -21,6 +21,16 @@
         <td>{{ task.createdDate | whelmeddate }}</td>
     </tr>
     <tr>
+        <th>Due date</th>
+        <td>
+            {% if task.dueDate is not null %}
+                {{ task.dueDate | whelmeddate }}
+            {% else %}
+                [No due date]
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
         <th>Completed</th>
         <td>
             {% if(task.isCompleted) %}

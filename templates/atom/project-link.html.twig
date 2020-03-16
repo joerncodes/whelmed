@@ -3,6 +3,6 @@
     {{ project.title }}
 
     {% if not showTaskCount is defined or showTaskCount %}
-        <span>{{ project.tasks|length }}</span>
+        <span class="badge badge-pill badge-light">{{ project.tasks|length }}</span>
     {% endif %}
 </a>
