@@ -1,6 +1,32 @@
-<div class="row">
+<div class="row task-form">
     <div class="col">
-        <h3>New Task</h3>
-        {{ form(form) }}
+        <h1 class="mb-3">New Task</h1>
+
+        <form action="{{ path('task.add') }}" method="POST" class="form task-form">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-lg" name="task[title]" id="task-title" autofocus placeholder="Task title">
+                <input type="hidden" name="task[project-uuid]" id="task-project-uuid">
+            </div>
+            <div class="row">
+                <div class="col-4"><button type="submit" class="btn btn-dark">Save task</button></div>
+                <div class="col-8 text-right">
+                    <div class="task-icon">
+                        <a href="" class="task-add-project">
+                            <i class="mdi mdi-plus-box-multiple"></i>
+                        </a>
+                        <div class="projects">
+                            <div class="button-nav">
+                                <div class="btn-group-vertical">
+                                    {% for project in projects.getProjects %}
+                                        {% include 'atom/project-link.html.twig' with { project : project, class : 'btn task-choose-project' } %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
 </div>

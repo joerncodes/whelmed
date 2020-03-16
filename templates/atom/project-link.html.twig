@@ -1,4 +1,7 @@
-<a href="{{ path('project.view', { uuid : project.uuid }) }}" class="project-link {% if class is defined %}{{ class }}{% endif %}">
+<a
+        href="{{ path('project.view', { uuid : project.uuid }) }}"
+        class="project-link {% if class is defined %}{{ class }}{% endif %}"
+        data-uuid="{{ project.uuid }}">
     {% include 'atom/project/icon.html.twig' with { icon : project.icon } %}
     {{ project.title }}
 

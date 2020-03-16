@@ -61,3 +61,36 @@ li.task-list-entry {
     }
   }
 }
+
+.task-form {
+  .projects {
+    display: none;
+    position: fixed;
+
+    .col-12 {
+      padding: 0;
+    }
+  }
+
+  .task-icon {
+    display: inline-block;
+    position: relative;
+
+    > a {
+      font-size: $font-size-lg * 1.5;
+
+      margin-right: $spacer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      color: $primary-muted;
+
+      &:hover {
+        color: $highlight;
+      }
+    }
+
+  }
+}

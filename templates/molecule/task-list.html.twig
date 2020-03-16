@@ -1,3 +1,10 @@
+<form action="">
+    <h5>Add task</h5>
+    <div class="form-group">
+        <input type="text" class="title" name="task_title" class="form-control form-control-lg">
+    </div>
+</form>
+
 {% if taskList.getTasks|length %}
     <ul class="task-list list-unstyled">
         {% for task in taskList.getTasks %}
@@ -9,3 +16,4 @@
 {% else %}
     <p class="lead text-center mt-5">No tasks in this list.<br>¯\_(ツ)_/¯</p>
 {% endif %}
+

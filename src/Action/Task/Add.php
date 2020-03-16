@@ -2,9 +2,12 @@
 
 namespace App\Action\Task;
 
+use App\Domain\Query\Project\All as AllQuery;
+use App\Domain\Query\Project\ByUuid;
 use App\Entity\Task;
 use App\Form\Type\TaskType;
 use App\Repository\TaskRepository;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,20 +35,31 @@ class Add
      * @var UrlGeneratorInterface
      */
     private $router;
+    /**
+     * @var AllQuery
+     */
+    private $allQuery;
+    /**
+     * @var ByUuid
+     */
+    private $byUuid;
 
     public function __construct(
         $formFactory,
         TaskRepository $repository,
         Security $security,
         Environment $twig,
-        UrlGeneratorInterface $router
-    )
-    {
+        UrlGeneratorInterface $router,
+        AllQuery $allQuery,
+        ByUuid $byUuid
+    ) {
         $this->formFactory = $formFactory;
         $this->repository = $repository;
         $this->user = $security->getUser();
         $this->twig = $twig;
         $this->router = $router;
+        $this->allQuery = $allQuery;
+        $this->byUuid = $byUuid;
     }
 
     /**
@@ -53,28 +67,26 @@ class Add
      */
     public function __invoke(Request $request): Response
     {
-        $task = new Task();
+        if($request->getMethod() === Request::METHOD_POST) {
+            $data = $request->request->all();
+            $task = (new Task())
+                ->setTitle($data['task']['title'])
+                ->setUser($this->user);
 
-        $form = $this->formFactory->create(TaskType::class, $task);
-        $form->handleRequest($request);
+            if(!empty($data['task']['project-uuid'])) {
+                $task->setProject($this->byUuid->get(Uuid::fromString($data['task']['project-uuid'])));
+            }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $task = $form->getData();
-            /** @var Task $task*/
-            $task->setUser($this->user);
             $this->repository->saveAndFlush($task);
 
             return new RedirectResponse(
-                $this->router->generate('task.view', [ 'uuid' => $task->getUuid()])
+                $this->router->generate('task.view', ['uuid' => $task->getUuid()])
             );
         }
 
         $content = $this->twig->render(
             'organism/task/form.html.twig',
-            [
-                'task' => $task,
-                'form' => $form->createView()
-            ]
+            ['projects' => $this->allQuery->getProjectList()]
         );
 
         return new Response($content);

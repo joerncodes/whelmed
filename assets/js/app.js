@@ -17,7 +17,19 @@ require('bootstrap');
 require('jquery-modal');
 
 $(document).on($.modal.OPEN, function() {
-    if($('#task_dueDate').length) {
+    if ($('.task-form').length) {
+        $('#task-title').focus();
+        $('.task-form .task-add-project').click(function() {
+            $('.task-form .projects').show();
+            return false;
+        });
+        $('.task-form .projects .task-choose-project').bind('click', function() {
+            $('#task-project-uuid').val($(this).data('uuid'));
+            $('.task-form .projects').hide();
+            return false;
+        });
+    }
+    /*if($('#task_dueDate').length) {
         const picker = datepicker('#task_dueDate', {
             formatter: (input, date, instance) => {
                 const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: '2-digit', day: '2-digit' })
@@ -25,7 +37,7 @@ $(document).on($.modal.OPEN, function() {
                 input.value = `${year}-${month}-${day} 00:00:00`
             }
         });
-    }
+    }*/
 });
 
 
