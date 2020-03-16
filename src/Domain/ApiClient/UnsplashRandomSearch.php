@@ -41,5 +41,4 @@ class UnsplashRandomSearch
 
         return $result->results[array_rand($result->results)];
     }
-
 }
