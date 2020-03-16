@@ -17,7 +17,7 @@ require('bootstrap');
 require('jquery-modal');
 
 $(document).on($.modal.OPEN, function() {
-    if ($('.task-form').length) {
+    if ($('.task-form:visible').length) {
         $('#task-title').focus();
         $('.task-form .task-add-project').click(function() {
             $('.task-form .projects').show();
@@ -28,7 +28,21 @@ $(document).on($.modal.OPEN, function() {
             $('.task-form .projects').hide();
             return false;
         });
+        $('.task-form .task-flag-project').bind('click', function() {
+            const $flag = $(this);
+
+            if($flag.hasClass('active')) {
+                $flag.removeClass('active');
+                $flag.closest('.task-form').find('#task-project-flagged').val('false');
+            } else {
+                $flag.addClass('active');
+                $flag.closest('.task-form').find('#task-project-flagged').val('true');
+            }
+
+            return false;
+        });
     }
+
     /*if($('#task_dueDate').length) {
         const picker = datepicker('#task_dueDate', {
             formatter: (input, date, instance) => {

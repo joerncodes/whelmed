@@ -6,6 +6,7 @@
             <div class="form-group">
                 <input type="text" class="form-control form-control-lg" name="task[title]" id="task-title" autofocus placeholder="Task title">
                 <input type="hidden" name="task[project-uuid]" id="task-project-uuid">
+                <input type="hidden" name="task[flagged]" id="task-project-flagged" value="false">
             </div>
             <div class="row">
                 <div class="col-4"><button type="submit" class="btn btn-dark">Save task</button></div>
@@ -24,7 +25,11 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="task-icon">
+                        <a href="" class="task-flag-project">
+                            <i class="mdi mdi-flag-variant"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </form>

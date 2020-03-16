@@ -76,6 +76,7 @@ li.task-list-entry {
     display: inline-block;
     position: relative;
 
+
     > a {
       font-size: $font-size-lg * 1.5;
 
@@ -86,6 +87,10 @@ li.task-list-entry {
       }
 
       color: $primary-muted;
+
+      &.active {
+        color: $highlight;
+      }
 
       &:hover {
         color: $highlight;

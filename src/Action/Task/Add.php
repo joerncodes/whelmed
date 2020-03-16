@@ -67,15 +67,18 @@ class Add
      */
     public function __invoke(Request $request): Response
     {
-        if($request->getMethod() === Request::METHOD_POST) {
+        if ($request->getMethod() === Request::METHOD_POST) {
             $data = $request->request->all();
             $task = (new Task())
                 ->setTitle($data['task']['title'])
                 ->setUser($this->user);
 
-            if(!empty($data['task']['project-uuid'])) {
+            if (!empty($data['task']['project-uuid'])) {
                 $task->setProject($this->byUuid->get(Uuid::fromString($data['task']['project-uuid'])));
             }
+            $task->setFlagged(
+                !empty($data['task']['flagged']) && $data['task']['flagged'] === 'true'
+            );
 
             $this->repository->saveAndFlush($task);
 
