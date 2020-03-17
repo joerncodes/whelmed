@@ -31,6 +31,10 @@ services:
         resource: '../src/Action'
         tags: ['controller.service_arguments']
 
+    App\Api\:
+        resource: '../src/Api'
+        tags: ['controller.service_arguments']
+
     App\Domain\ApiClient\UnsplashRandomSearch:
         arguments:
             - '%env(UNSPLASH_ACCESS_KEY)%'

@@ -6,7 +6,7 @@ use App\Domain\Task\Score\TaskScore;
 use App\Entity\Task;
 use Webmozart\Assert\Assert;
 
-class TaskList
+class TaskList implements \JsonSerializable
 {
     /**
      * @var array
@@ -113,5 +113,13 @@ class TaskList
     public function getTasks(): array
     {
         return $this->tasks;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'count' => count($this->tasks),
+            'tasks' => $this->tasks,
+        ];
     }
 }

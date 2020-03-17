@@ -58,11 +58,17 @@ class User implements UserInterface
      */
     private $tags;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\AccessToken", mappedBy="user")
+     */
+    private $accessTokens;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
         $this->projects = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->accessTokens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,5 +257,36 @@ class User implements UserInterface
     public function eraseCredentials(): void
     {
         return;
+    }
+
+    /**
+     * @return Collection|AccessToken[]
+     */
+    public function getAccessTokens(): Collection
+    {
+        return $this->accessTokens;
+    }
+
+    public function addAccessToken(AccessToken $accessToken): self
+    {
+        if (!$this->accessTokens->contains($accessToken)) {
+            $this->accessTokens[] = $accessToken;
+            $accessToken->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccessToken(AccessToken $accessToken): self
+    {
+        if ($this->accessTokens->contains($accessToken)) {
+            $this->accessTokens->removeElement($accessToken);
+            // set the owning side to null (unless already changed)
+            if ($accessToken->getUser() === $this) {
+                $accessToken->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

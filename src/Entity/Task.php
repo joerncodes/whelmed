@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Task extends Base
+class Task extends Base implements \JsonSerializable
 {
     use HasUuid, IsCreated, IsCompleted;
 
@@ -149,5 +149,31 @@ class Task extends Base
         $this->dueDate = $dueDate;
 
         return $this;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        $data = [
+            'title' => $this->title,
+            'uuid' => $this->uuid,
+            'project' => null,
+            'flagged' => $this->isFlagged(),
+        ];
+
+        if($this->getProject()) {
+            $data['project'] = [
+                'title' => $this->getProject()->getTitle(),
+                'uuid' => $this->getProject()->getUuid(),
+            ];
+        }
+
+        return $data;
     }
 }

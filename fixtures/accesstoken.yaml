@@ -1,0 +1,7 @@
+App\Entity\AccessToken:
+  token_scott:
+    token: <regexify('[a-z0-9]{32}')>
+    user: "@user_scott"
+  token_ramona:
+    token: <regexify('[a-z0-9]{32}')>
+    user: "@user_ramona"
