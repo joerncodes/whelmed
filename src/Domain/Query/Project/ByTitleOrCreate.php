@@ -42,11 +42,9 @@ class ByTitleOrCreate
 
     public function get(string $title): Project
     {
-        try
-        {
+        try {
             return $this->byTitle->get($title);
-        }
-        catch(NoResultException $e) {
+        } catch (NoResultException $e) {
             $project = (new Project())
                 ->setTitle($title)
                 ->setUser($this->user);

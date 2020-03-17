@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Project;
 use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -19,6 +20,26 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
+    public function flush():void
+    {
+        $this->getEntityManager()->flush();
+    }
+
+    public function remove(Tag $tag): void
+    {
+        $this->getEntityManager()->remove($tag);
+    }
+
+    public function save(Tag $tag): void
+    {
+        $this->getEntityManager()->persist(($tag));
+    }
+
+    public function saveAndFlush(Tag $tag): void
+    {
+        $this->save($tag);
+        $this->getEntityManager()->flush();
+    }
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */
