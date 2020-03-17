@@ -2,8 +2,6 @@
 
 namespace App\Domain\Task\Tokenizer;
 
-use App\Domain\Task\Tokenizer\TokenizerInterface;
-use App\Entity\Task;
 use App\Transfer\TaskTokenizerPart;
 use Webmozart\Assert\Assert;
 

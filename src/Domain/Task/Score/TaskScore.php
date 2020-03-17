@@ -3,7 +3,6 @@
 namespace App\Domain\Task\Score;
 
 use App\Entity\Task;
-use App\Domain\Task\Score\TaskScoreInterface;
 use Webmozart\Assert\Assert;
 
 class TaskScore

@@ -3,12 +3,7 @@
 namespace App\Domain\Task\Tokenizer;
 
 use App\Domain\Query\Project\ByTitleOrCreate;
-use App\Entity\Project as ProjectEntity;
-use App\Domain\Query\Project\ByTitle;
-use App\Repository\ProjectRepository;
 use App\Transfer\TaskTokenizerPart;
-use Doctrine\ORM\NoResultException;
-use Symfony\Component\Security\Core\Security;
 
 class Project implements TokenizerInterface
 {

@@ -3,7 +3,6 @@
 namespace App\Domain\Query\Project;
 
 use App\Domain\Project\ProjectList;
-use App\Domain\Task\TaskList;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;

@@ -2,14 +2,10 @@
 
 namespace App\Repository;
 
-use App\Domain\Task\TaskList;
 use App\Entity\Task;
-use App\Entity\User;
 use App\Repository\Traits\HasUuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\NoResultException;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @method Task|null find($id, $lockMode = null, $lockVersion = null)

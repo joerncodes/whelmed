@@ -5,7 +5,6 @@ namespace App\Action\Task;
 use App\Domain\Query\Project\All as AllQuery;
 use App\Domain\Query\Project\ByUuid;
 use App\Entity\Task;
-use App\Form\Type\TaskType;
 use App\Repository\TaskRepository;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;

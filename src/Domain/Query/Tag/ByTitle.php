@@ -2,7 +2,6 @@
 
 namespace App\Domain\Query\Tag;
 
-use App\Entity\Project;
 use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;

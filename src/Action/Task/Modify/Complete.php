@@ -2,12 +2,8 @@
 
 namespace App\Action\Task\Modify;
 
-use App\Domain\Query\Task\ByUuid;
-use App\Repository\TaskRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Webmozart\Assert\Assert;
 
 class Complete extends Base
 {

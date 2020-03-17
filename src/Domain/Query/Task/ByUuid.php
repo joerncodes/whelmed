@@ -2,7 +2,6 @@
 
 namespace App\Domain\Query\Task;
 
-use App\Domain\Task\TaskList;
 use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;

@@ -3,7 +3,6 @@
 namespace App\Faker\Provider;
 
 use App\Domain\Constants\Icons;
-use Faker\Generator;
 use Faker\Provider\Base as BaseProvider;
 
 class IconProvider extends BaseProvider

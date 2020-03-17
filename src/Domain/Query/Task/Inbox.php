@@ -4,8 +4,6 @@ namespace App\Domain\Query\Task;
 
 use App\Domain\Task\TaskList;
 use App\Entity\Task;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\QueryBuilder;
 
 class Inbox extends Base
 {

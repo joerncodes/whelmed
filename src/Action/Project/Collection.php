@@ -2,7 +2,6 @@
 
 namespace App\Action\Project;
 
-use App\Repository\ProjectRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 

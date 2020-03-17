@@ -6,7 +6,6 @@ use App\Entity\Project;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NoResultException;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Security;
 use Webmozart\Assert\Assert;
 

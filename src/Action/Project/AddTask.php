@@ -4,7 +4,6 @@ namespace App\Action\Project;
 
 use App\Entity\Project;
 use App\Entity\Task;
-use App\Repository\ProjectRepository;
 use App\Repository\TaskRepository;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;

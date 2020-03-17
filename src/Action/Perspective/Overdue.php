@@ -2,7 +2,6 @@
 
 namespace App\Action\Perspective;
 
-use App\Domain\Query\Task\Flagged as FlaggedQuery;
 use App\Domain\Query\Task\Overdue as OverdueQuery;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
