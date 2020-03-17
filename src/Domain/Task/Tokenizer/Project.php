@@ -2,6 +2,7 @@
 
 namespace App\Domain\Task\Tokenizer;
 
+use App\Domain\Query\Project\ByTitleOrCreate;
 use App\Entity\Project as ProjectEntity;
 use App\Domain\Query\Project\ByTitle;
 use App\Repository\ProjectRepository;
@@ -12,25 +13,15 @@ use Symfony\Component\Security\Core\Security;
 class Project implements TokenizerInterface
 {
     const REGEX = '%#(?P<projectTitle>[a-zA-Z\s]+)%i';
-    /**
-     * @var ByTitle
-     */
-    private $byTitleQuery;
-    /**
-     * @var ProjectRepository
-     */
-    private $projectRepository;
 
     /**
-     * @var \Symfony\Component\Security\Core\User\UserInterface|null
+     * @var ByTitleOrCreate
      */
-    private $user;
+    private $byTitleOrCreate;
 
-    public function __construct(ByTitle $byTitleQuery, ProjectRepository $projectRepository, Security $security)
+    public function __construct(ByTitleOrCreate $byTitleOrCreate)
     {
-        $this->byTitleQuery = $byTitleQuery;
-        $this->projectRepository = $projectRepository;
-        $this->user = $security->getUser();
+        $this->byTitleOrCreate = $byTitleOrCreate;
     }
 
     public function tokenize(TaskTokenizerPart $tokenizerPart): TaskTokenizerPart
@@ -39,14 +30,7 @@ class Project implements TokenizerInterface
         if (preg_match(self::REGEX, $tokenizerPart->getTaskTitle(), $matches)) {
             $projectTitle = $matches['projectTitle'];
 
-            try {
-                $project = $this->byTitleQuery->get($projectTitle);
-            } catch (NoResultException $e) {
-                $project = (new ProjectEntity())
-                    ->setTitle($projectTitle)
-                    ->setUser($this->user);
-                $this->projectRepository->saveAndFlush($project);
-            }
+            $project = $this->byTitleOrCreate->get($projectTitle);
 
             $tokenizerPart->setTaskTitle(
                 preg_replace(self::REGEX, '', $tokenizerPart->getTaskTitle())
