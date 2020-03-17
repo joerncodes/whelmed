@@ -36,13 +36,12 @@ class Project implements TokenizerInterface
     public function tokenize(TaskTokenizerPart $tokenizerPart): TaskTokenizerPart
     {
         $matches = [];
-        if(preg_match(self::REGEX, $tokenizerPart->getTaskTitle(), $matches)) {
+        if (preg_match(self::REGEX, $tokenizerPart->getTaskTitle(), $matches)) {
             $projectTitle = $matches['projectTitle'];
 
             try {
                 $project = $this->byTitleQuery->get($projectTitle);
-            }
-            catch(NoResultException $e) {
+            } catch (NoResultException $e) {
                 $project = (new ProjectEntity())
                     ->setTitle($projectTitle)
                     ->setUser($this->user);

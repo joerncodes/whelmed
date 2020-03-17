@@ -8,4 +8,3 @@ interface TokenizerInterface
 {
     public function tokenize(TaskTokenizerPart $tokenizerPart): TaskTokenizerPart;
 }
-

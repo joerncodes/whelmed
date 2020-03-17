@@ -21,9 +21,13 @@ class QuickAdd extends Base
     /**
      * @Route("/task/quick-add", name="task.quick-add", methods={"POST"})
      */
-    public function __invoke(Request $request, TaskRepository $repository, UrlGeneratorInterface $router,
-         Security $security, Tokenizer $tokenizer): Response
-    {
+    public function __invoke(
+        Request $request,
+        TaskRepository $repository,
+        UrlGeneratorInterface $router,
+        Security $security,
+        Tokenizer $tokenizer
+    ): Response {
         if (!$request->request->has(self::FORM_INPUT_NAME)) {
             throw new NotFoundHttpException();
         }

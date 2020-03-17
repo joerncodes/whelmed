@@ -22,7 +22,7 @@ class Tokenizer
 
     public function tokenize(TaskTokenizerPart $tokenizerPart): TaskTokenizerPart
     {
-        foreach($this->tokenizers as $tokenizer) {
+        foreach ($this->tokenizers as $tokenizer) {
             /** @var TokenizerInterface $tokenizer */
             $tokenizerPart = $tokenizer->tokenize($tokenizerPart);
         }
