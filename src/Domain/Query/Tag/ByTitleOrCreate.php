@@ -40,11 +40,9 @@ class ByTitleOrCreate
 
     public function get(string $title): Tag
     {
-        try
-        {
+        try {
             return $this->byTitle->get($title);
-        }
-        catch(NoResultException $e) {
+        } catch (NoResultException $e) {
             $tag = (new Tag())
                 ->setTitle($title)
                 ->setUser($this->user);
