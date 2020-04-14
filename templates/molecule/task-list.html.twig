@@ -5,6 +5,8 @@
     </div>
 </form>
 
+<div class="task-list-react" data-url="/api/v1/tasks/all"></div>
+
 {% if taskList.getTasks|length %}
     <ul class="task-list list-unstyled">
         {% for task in taskList.getTasks %}

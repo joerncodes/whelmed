@@ -1,5 +1,6 @@
 {
     "devDependencies": {
+        "@babel/preset-react": "^7.8.3",
         "@symfony/webpack-encore": "^0.28.2",
         "bootstrap": "^4.4.1",
         "core-js": "^3.0.0",
@@ -15,11 +16,22 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.8.3",
         "@mdi/font": "^5.0.45",
+        "axios": "^0.19.2",
+        "classnames": "^2.2.6",
         "flatpickr": "^4.6.3",
         "jquery": "^3.4.1",
         "jquery-modal": "^0.9.2",
         "popper": "^1.0.1",
-        "popper.js": "^1.16.1"
+        "popper.js": "^1.16.1",
+        "prop-types": "^15.7.2",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "^5.1.2",
+        "reactstrap": "^8.4.1",
+        "redux": "^4.0.5"
     }
 }

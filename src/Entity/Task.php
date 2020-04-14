@@ -165,6 +165,8 @@ class Task extends Base implements \JsonSerializable
             'uuid' => $this->uuid,
             'project' => null,
             'flagged' => $this->isFlagged(),
+            'completed' => $this->completedDate !== null,
+            'completedDate' => $this->completedDate ? $this->completedDate->format('Y-m-d H:i:s') : null,
         ];
 
         if($this->getProject()) {

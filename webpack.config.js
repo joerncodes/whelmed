@@ -51,6 +51,11 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
+        /*config.plugins = [
+            "@babel/plugin-proposal-object-rest-spread",
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-transform-runtime"
+        ]*/
     })
 
     // enables Sass/SCSS support
@@ -80,7 +85,7 @@ Encore
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
+    .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 ;
 

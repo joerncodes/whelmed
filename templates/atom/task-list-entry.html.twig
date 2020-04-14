@@ -50,7 +50,7 @@
         </div>
         <div class="task-actions col-1">
             {% if not task.isCompleted %}
-                {% include 'atom/task/task-action-flag.html.twig' with { task : task } only %}
+                <div class="task-flag" data-uuid="{{ task.uuid }}" data-flagged="{{ task.flagged ? 'true' : 'false'}}"></div>
             {% endif %}
         </div>
 
