@@ -26,12 +26,16 @@
 
             <section class="text-muted mt-1 mb-2 task-meta">
                 {% if task.dueDate is not null %}
-                    <i class="mdi mdi-alarm-check"></i>
-                    {{ task.dueDate|whelmeddate }}
-
-                    {% if showProject is defined and showProject == true or task.tag|length %}
-                        <i class="mdi mdi-circle-small"></i>
-                    {% endif %}
+                    <span class="badge badge-pill badge-light" title="Due on: {{ task.dueDate|whelmeddate }}">
+                        <i class="mdi mdi-alarm-check"></i>
+                        {{ task.dueDate|whelmeddate }}
+                    </span>
+                {% endif %}
+                {% if task.deferDate is not null %}
+                    <span class="badge badge-pill badge-light" title="Deferred until: {{ task.deferDate|whelmeddate }}">
+                        <i class="mdi mdi-alarm-off"></i>
+                        {{ task.deferDate|whelmeddate }}
+                    </span>
                 {% endif %}
 
                 {% if showProject is defined and showProject == true and task.project is not null %}
@@ -42,7 +46,7 @@
                     {% endif %}
                 {% endif %}
                 {% for tag in task.tag %}
-                    <span class="tag badge badge-pill badge-light">{{ tag.title }}</span>
+                    <span class="tag badge badge-pill badge-light">@{{ tag.title }}</span>
                 {% endfor %}
                 &nbsp;
             </section>

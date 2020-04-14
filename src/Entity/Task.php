@@ -55,6 +55,11 @@ class Task extends Base implements \JsonSerializable
      */
     private $dueDate;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deferDate;
+
     public function __construct()
     {
         $this->tag = new ArrayCollection();
@@ -177,5 +182,17 @@ class Task extends Base implements \JsonSerializable
         }
 
         return $data;
+    }
+
+    public function getDeferDate(): ?\DateTimeInterface
+    {
+        return $this->deferDate;
+    }
+
+    public function setDeferDate(?\DateTimeInterface $deferDate): self
+    {
+        $this->deferDate = $deferDate;
+
+        return $this;
     }
 }

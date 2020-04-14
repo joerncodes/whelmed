@@ -1,6 +1,10 @@
 li.task-list-entry {
   .task-meta {
-    opacity: 0.2;
+    opacity: 0.3;
+
+    .badge {
+      font-size: $font-size-sm;
+    }
   }
   &:hover .task-meta {
     opacity: 1;

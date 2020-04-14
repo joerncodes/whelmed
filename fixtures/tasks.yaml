@@ -3,6 +3,7 @@ App\Entity\Task:
     title: <task()>
     createdDate: <dateTimeBetween("-20 days", "now")>
     completedDate: 40%? <dateTimeBetween($createdDate, "now")>
+    deferDate: 30%? <dateTimeBetween("now", "20 days")>
     project: 30%? @project*
     flagged: <boolean(20)>
     dueDate: 60%? <dateTimeBetween("-10 days", "20days")>
