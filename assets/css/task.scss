@@ -1,4 +1,10 @@
 li.task-list-entry {
+  .task-meta {
+    opacity: 0.2;
+  }
+  &:hover .task-meta {
+    opacity: 1;
+  }
   a.action-icon {
     color: $text-muted;
     font-size: $font-size-lg * 1.5;
@@ -38,7 +44,7 @@ li.task-list-entry {
     font-weight: bold;
 
     &.overdue {
-      color: $highlight;
+      color: $danger;
     }
 
     &.completed {
@@ -98,4 +104,9 @@ li.task-list-entry {
     }
 
   }
+}
+
+h1.task-completed {
+  color: $text-muted;
+  text-decoration: line-through;
 }

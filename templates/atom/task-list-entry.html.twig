@@ -24,7 +24,7 @@
                 {% endif %}
             </a>
 
-            <p class="text-muted">
+            <section class="text-muted mt-1 mb-2 task-meta">
                 {% if task.dueDate is not null %}
                     <i class="mdi mdi-alarm-check"></i>
                     {{ task.dueDate|whelmeddate }}
@@ -44,15 +44,10 @@
                 {% for tag in task.tag %}
                     <span class="tag badge badge-pill badge-light">{{ tag.title }}</span>
                 {% endfor %}
-            </p>
+                &nbsp;
+            </section>
 
 
         </div>
-        <div class="task-actions col-1">
-            {% if not task.isCompleted %}
-                <div class="task-flag" data-uuid="{{ task.uuid }}" data-flagged="{{ task.flagged ? 'true' : 'false'}}"></div>
-            {% endif %}
-        </div>
-
     </div>
 </li>

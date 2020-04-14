@@ -1,4 +1,8 @@
-<h1>{{ task.title }}</h1>
+<h1
+    {% if task.isCompleted %}class="task-completed"{% endif %}
+    >
+    {{ task.title }}
+</h1>
 {% include 'molecule/task-action-bar.html.twig' with { task : task } only %}
 
 <table class="table">
