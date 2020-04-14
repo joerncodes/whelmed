@@ -41,8 +41,7 @@ abstract class Base
 
     protected function getViewParameters(): array
     {
-        $projectList = $this->allQuery->getProjectList();
-        return compact('projectList');
+        return [];
     }
 
     protected function getProjectOrFail(string $uuid): \App\Entity\Base

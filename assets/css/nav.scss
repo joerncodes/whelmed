@@ -41,6 +41,10 @@ header .icon {
   padding: 0;
   background-color: $dark;
 
+  h5 {
+    color: $light;
+  }
+
   .btn-group-vertical {
     padding-top: $spacer * .25;
     width: 100%;

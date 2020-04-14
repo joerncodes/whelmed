@@ -36,11 +36,11 @@ import Whelmed from './components/App'
 import TaskFlag from './components/TaskFlag'
 import TaskList from './components/TaskList'
 
-ReactDOM.render(
+/*ReactDOM.render(
     <Provider store={store}>
         <Whelmed />
     </Provider>
-    , document.getElementById('root'));
+    , document.getElementById('root'));*/
 
 document.querySelectorAll('.task-flag')
     .forEach(domContainer => {
