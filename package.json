@@ -22,7 +22,7 @@
         "axios": "^0.19.2",
         "classnames": "^2.2.6",
         "flatpickr": "^4.6.3",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "jquery-modal": "^0.9.2",
         "popper": "^1.0.1",
         "popper.js": "^1.16.1",
