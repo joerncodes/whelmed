@@ -1,4 +1,10 @@
 li.task-list-entry {
+  .task-actions {
+    opacity: 0.3;
+  }
+  &:hover .task-actions {
+    opacity: 1;
+  }
   .task-meta {
     opacity: 0.3;
 
@@ -62,7 +68,8 @@ li.task-list-entry {
     }
   }
 
-  .task-actions {
+  .task-actions a {
+    float: left;
   }
 
   ul.task-action-bar {

@@ -19,7 +19,6 @@ require('jquery-modal');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 // <snip>
 import { createStore } from 'redux';
 import whelmedApp from './reducers';
@@ -32,9 +31,10 @@ import Whelmed from './components/App'
 
 // <snap>
 
-
 import TaskFlag from './components/TaskFlag'
+import TaskSelectProject from './components/TaskSelectProject'
 import TaskList from './components/TaskList'
+
 
 /*ReactDOM.render(
     <Provider store={store}>
@@ -47,6 +47,12 @@ document.querySelectorAll('.task-flag')
         const flagged = domContainer.dataset.flagged === 'true';
         const uuid = domContainer.dataset.uuid;
         ReactDOM.render(<TaskFlag flagged={flagged} uuid={uuid} />, domContainer)
+    });
+
+document.querySelectorAll('.task-select-project')
+    .forEach(domContainer => {
+        const uuid = domContainer.dataset.uuid;
+        ReactDOM.render(<TaskSelectProject uuid={uuid} />, domContainer)
     });
 
 $(document).on($.modal.OPEN, function() {

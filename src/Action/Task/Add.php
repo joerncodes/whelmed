@@ -35,10 +35,6 @@ class Add
      */
     private $router;
     /**
-     * @var AllQuery
-     */
-    private $allQuery;
-    /**
      * @var ByUuid
      */
     private $byUuid;
@@ -49,7 +45,6 @@ class Add
         Security $security,
         Environment $twig,
         UrlGeneratorInterface $router,
-        AllQuery $allQuery,
         ByUuid $byUuid
     ) {
         $this->formFactory = $formFactory;
@@ -57,7 +52,6 @@ class Add
         $this->user = $security->getUser();
         $this->twig = $twig;
         $this->router = $router;
-        $this->allQuery = $allQuery;
         $this->byUuid = $byUuid;
     }
 
@@ -92,7 +86,6 @@ class Add
 
         $content = $this->twig->render(
             'organism/task/form.html.twig',
-            ['projects' => $this->allQuery->getProjectList()]
         );
 
         return new Response($content);
