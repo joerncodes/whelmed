@@ -19,7 +19,7 @@
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-transform-runtime": "^7.8.3",
         "@mdi/font": "^5.0.45",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "classnames": "^2.2.6",
         "flatpickr": "^4.6.3",
         "jquery": "^3.4.1",
